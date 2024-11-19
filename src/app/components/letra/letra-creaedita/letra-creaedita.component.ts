@@ -40,6 +40,7 @@ export class LetraCreaeditaComponent {
 
   fechasvalidas: boolean = true;
 
+  idusuario:number = 0;
   role:string = '';
   username:string = '';
 
@@ -62,31 +63,32 @@ export class LetraCreaeditaComponent {
     const manana = new Date();
     manana.setDate(manana.getDate() + 1);
 
-    this.form = this.formBuilder.group({
-      id: [''],
-      idCartera: ['', [Validators.required]], 
-      idUsuario: ['', [Validators.required]], 
-      fechaDeGiro: [new Date()], 
-      valorNominal: [0.0, [Validators.required, Validators.min(0)]], 
-      fechaDeDscto: [manana], 
-      nDias: [0, [Validators.required, Validators.min(0)]],
-      tep: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
-      d: [0.0, [Validators.required, Validators.min(0)]],
-      descuento: [0.0, [Validators.required, Validators.min(0)]], 
-      costesIniciales: [0.0, [Validators.required, Validators.min(0)]], 
-      costesFinales: [0.0, [Validators.required, Validators.min(0)]], 
-      seguro: [0.0, [Validators.required, Validators.min(0)]], 
-      retencion: [0.0, [Validators.required, Validators.min(0)]], 
-      valorNeto: [0.0, [Validators.required, Validators.min(0)]], 
-      valorARecibir: [0.0, [Validators.required, Validators.min(0)]], 
-      flujo: [0.0, [Validators.required, Validators.min(0)]],
-      tcea: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
-      tipoMoneda: [0, [Validators.required, Validators.min(0)]],
-    });
 
-    this.uS.list().subscribe(data => { this.listaUsuarios = data });
+      this.form = this.formBuilder.group({
+        id: [''],
+        idCartera: ['', [Validators.required]], 
+        idUsuario: [''], 
+        fechaDeGiro: [new Date()], 
+        valorNominal: [0.0, [Validators.required, Validators.min(0)]], 
+        fechaDeDscto: [manana], 
+        nDias: [0, [Validators.required, Validators.min(0)]],
+        tep: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
+        d: [0.0, [Validators.required, Validators.min(0)]],
+        descuento: [0.0, [Validators.required, Validators.min(0)]], 
+        costesIniciales: [0.0, [Validators.required, Validators.min(0)]], 
+        costesFinales: [0.0, [Validators.required, Validators.min(0)]], 
+        seguro: [0.0, [Validators.required, Validators.min(0)]], 
+        retencion: [0.0, [Validators.required, Validators.min(0)]], 
+        valorNeto: [0.0, [Validators.required, Validators.min(0)]], 
+        valorARecibir: [0.0, [Validators.required, Validators.min(0)]], 
+        flujo: [0.0, [Validators.required, Validators.min(0)]],
+        tcea: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
+        tipoMoneda: [0, [Validators.required, Validators.min(0)]],
+      });
 
-    this.cS.list().subscribe(data => { this.listaCarteras = data });
+      this.uS.list().subscribe(data => { this.listaUsuarios = data });
+
+      this.cS.list().subscribe(data => { this.listaCarteras = data });
 
     this.route.params.subscribe((data: Params) => {
       this.id = data['id']; //xd
@@ -97,70 +99,90 @@ export class LetraCreaeditaComponent {
       this.init();
     });
 
-
+    
 
   }
   registrar() {
-    if (this.form.valid) {
-      this.letras.id = this.form.value.id;
-      this.letras.idCartera.id = this.form.value.idCartera;
-      this.letras.idUsuario.id = this.form.value.idUsuario;
-      this.letras.fechaDeGiro = this.form.value.fechaDeGiro;
-      this.letras.valorNominal = this.form.value.valorNominal;
-      this.letras.fechaDeDscto = this.form.value.fechaDeDscto;
-      this.letras.nDias = this.form.value.nDias;
-      this.letras.tep = this.form.value.tep;
-      this.letras.d = this.form.value.d;
-      this.letras.descuento = this.form.value.descuento;
-      this.letras.costesIniciales = this.form.value.costesIniciales;
-      this.letras.costesFinales = this.form.value.costesFinales;
-      this.letras.seguro = this.form.value.seguro;
-      this.letras.retencion = this.form.value.retencion;
-      this.letras.valorNeto = this.form.value.valorNeto;
-      this.letras.valorARecibir = this.form.value.valorARecibir;
-      this.letras.flujo = this.form.value.flujo;
-      this.letras.tcea = this.form.value.tcea;
-      this.letras.tipoMoneda = this.form.value.tipoMoneda;
 
-      this.fechasvalidas = true;
+    this.mensaje='';
+    this.mensaje2='';
 
-      if (this.letras.fechaDeGiro > this.letras.fechaDeDscto) {
-        this.mensaje2 = 'La fecha de Giro no puede ser mayor que la fecha de Dscto' ;
-        this.fechasvalidas = false;
-      }
-  
-      if (this.letras.fechaDeDscto < this.letras.fechaDeGiro) {
-        this.mensaje2 = 'La fecha de Dscto no puede ser menor que la fecha de Giro' ;
-        this.fechasvalidas = false;
-      }
-
-      if (this.fechasvalidas)
+    this.uS.list().subscribe(usuarios =>
       {
-        if (this.edicion) {
-          this.tuS.modificar(this.letras).subscribe((data) => {
-            this.tuS.list().subscribe(data => {
-              this.tuS.setList(data);
-            })
-  
-            if (this.currentrole!=this.form.value.nombreLetra)
-            {
-              console.log(this.currentrole);
-            }
-            
-          })
-        } else {
-          this.tuS.insert(this.letras).subscribe((data) => {
-            this.tuS.list().subscribe(data => {
-              this.tuS.setList(data)
-            })
-          })
-        }
-        this.router.navigate(['/components/letras/listar']);
-      }
+        for (let u of usuarios)
+        {
+          if (u.username == this.username)
+          {
+            console.log('ID de usuario es: ' + u.id);
+            this.idusuario=u.id
 
-    } else {
-      this.mensaje = this.obtenerMensajesDeError();
-    }
+            //
+            if (this.form.valid) {
+              this.letras.id = this.form.value.id;
+              this.letras.idCartera.id = this.form.value.idCartera;
+              if (this.edicion == false) {this.letras.idUsuario.id = u.id;} else this.letras.idUsuario.id = this.form.value.idUsuario;
+              this.letras.fechaDeGiro = this.form.value.fechaDeGiro;
+              this.letras.valorNominal = this.form.value.valorNominal;
+              this.letras.fechaDeDscto = this.form.value.fechaDeDscto;
+              this.letras.nDias = this.form.value.nDias;
+              this.letras.tep = this.form.value.tep;
+              this.letras.d = this.form.value.d;
+              this.letras.descuento = this.form.value.descuento;
+              this.letras.costesIniciales = this.form.value.costesIniciales;
+              this.letras.costesFinales = this.form.value.costesFinales;
+              this.letras.seguro = this.form.value.seguro;
+              this.letras.retencion = this.form.value.retencion;
+              this.letras.valorNeto = this.form.value.valorNeto;
+              this.letras.valorARecibir = this.form.value.valorARecibir;
+              this.letras.flujo = this.form.value.flujo;
+              this.letras.tcea = this.form.value.tcea;
+              this.letras.tipoMoneda = this.form.value.tipoMoneda;
+        
+              this.fechasvalidas = true;
+        
+              if (this.letras.fechaDeGiro > this.letras.fechaDeDscto) {
+                this.mensaje2 = 'La fecha de Giro no puede ser mayor que la fecha de Dscto' ;
+                this.fechasvalidas = false;
+              }
+          
+              if (this.letras.fechaDeDscto < this.letras.fechaDeGiro) {
+                this.mensaje2 = 'La fecha de Dscto no puede ser menor que la fecha de Giro' ;
+                this.fechasvalidas = false;
+              }
+        
+              if (this.fechasvalidas)
+              {
+                if (this.edicion) {
+                  this.tuS.modificar(this.letras).subscribe((data) => {
+                    this.tuS.list().subscribe(data => {
+                      this.tuS.setList(data);
+                    })
+          
+                    if (this.currentrole!=this.form.value.nombreLetra)
+                    {
+                      console.log(this.currentrole);
+                    }
+                    
+                  })
+                } else {
+                  this.tuS.insert(this.letras).subscribe((data) => {
+                    this.tuS.list().subscribe(data => {
+                      this.tuS.setList(data)
+                    })
+                  })
+                }
+                this.router.navigate(['/components/letras/listar']);
+              }
+        
+            } else {
+              this.mensaje = this.obtenerMensajesDeError();
+            }
+            //
+          }
+        }
+      })
+
+      
   }
 
   obtenerMensajesDeError(): string {
@@ -198,7 +220,6 @@ export class LetraCreaeditaComponent {
 
   init() {
     if (this.edicion) {
-     
         this.tuS.listarId(this.id).subscribe((data2) => {
           this.form = new FormGroup({
           id: new FormControl(data2.id),
