@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h2>ㅤ</h2>
+    <div class="container" style="text-align: center">
+      <h2>{{titulo}}</h2>
+      <br />
+      <form [formGroup]="form" (submit)="registrar()" class="example-form">
+        <div class ="center">
+        </div>
+        <br>
+
+        <div class="contenedor-principal">
+
+          <div class="columna">
+          <br>
+          
+          <br />
+          <mat-label class="label">Seleccione la fecha de Descuento</mat-label>
+          <mat-form-field appearance="fill" class="example-full-width">
+          <input
+              matInput
+              placeholder="Ingrese la fecha"
+              [matDatepicker]="picker"
+              formControlName="fechaDescuento"
+          />
+          <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+              *ngIf="obtenerControlCampo('fechaDescuento')?.errors?.['required']"
+                  >Obligatorio*
+              </mat-error>
+          </mat-form-field>
+          <br>
+
+          <mat-label class="label">Dias por Año</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Dias por Año</mat-label>
+              <input matInput placeholder="diasXAnio" formControlName="diasXAnio"/>
+              <mat-error
+                *ngIf="obtenerControlCampo('diasXAnio')?.errors?.['required']"
+              >
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+
+
+                
+            <mat-label class="label">Comisión de Activación</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Comisión de Activación</mat-label>
+              <input matInput placeholder="comisionActivacion" formControlName="comisionActivacion" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('comisionActivacion')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+
+            <mat-label class="label">Comisión de Activación Tipo</mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Comisión de Activación Tipo</mat-label>
+                <mat-select formControlName="comisionActivacionTipo">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('comisionActivacionTipo')?.errors?.['required']"
+                  >Complete el campo
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Fotocopias</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Fotocopias</mat-label>
+              <input matInput placeholder="fotocopias" formControlName="fotocopias" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('fotocopias')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+
+            <mat-label class="label">Fotocopias Tipo</mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Fotocopias Tipo</mat-label>
+                <mat-select formControlName="fotocopiasTipo">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('fotocopiasTipo')?.errors?.['required']"
+                  >Complete el campo
+                </mat-error>
+            </mat-form-field>
+
+                       
+            <mat-label class="label">Estudio de Títulos</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Estudio de Títulos</mat-label>
+              <input matInput placeholder="estudioDeTitulos" formControlName="estudioDeTitulos" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('estudioDeTitulos')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Estudio de Títulos Tipo</mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Estudio de Títulos Tipo</mat-label>
+                <mat-select formControlName="estudioDeTitulosTipo">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('estudioDeTitulosTipo')?.errors?.['required']"
+                  >Complete el campo
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Gastos Administrativos</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Gastos Administrativos</mat-label>
+              <input matInput placeholder="gastosAdministrativos" formControlName="gastosAdministrativos" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('gastosAdministrativos')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Gastos Administrativos Tipo</mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Gastos Administrativos Tipo</mat-label>
+                <mat-select formControlName="gastosAdministrativosTipo">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('gastosAdministrativosTipo')?.errors?.['required']"
+                  >Complete el campo
+                </mat-error>
+            </mat-form-field>
+
+
+            
+            <mat-label class="label">Portes</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Portes</mat-label>
+              <input matInput placeholder="portes" formControlName="portes" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('portes')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+
+            <mat-label class="label">Portes Tipo</mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Portes Tipo</mat-label>
+                <mat-select formControlName="portesTipo">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('portesTipo')?.errors?.['required']"
+                  >Complete el campo
+                </mat-error>
+            </mat-form-field>
+
+            <mat-label class="label">Seguro</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Seguro</mat-label>
+              <input matInput placeholder="seguro" formControlName="seguro" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('seguro')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+
+            <mat-label class="label">Seguro Tipo</mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Seguro Tipo</mat-label>
+                <mat-select formControlName="seguroTipo">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('seguroTipo')?.errors?.['required']"
+                  >Complete el campo
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Retención</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Retención</mat-label>
+              <input matInput placeholder="retencion" formControlName="retencion" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('retencion')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Retención Tipo</mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Retención Tipo</mat-label>
+                <mat-select formControlName="retencionTipo">
+                  <mat-option *ngFor="let t of tipos" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('retencionTipo')?.errors?.['required']"
+                  >Complete el campo
+                </mat-error>
+            </mat-form-field>
+              
+
+           <br>
+          </div>
+
+          <div class="columna">
+            <br>
+
+            
+            <mat-label class="label">TEA Compensatoria</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>TEA Compensatoria</mat-label>
+              <input matInput placeholder="teaCompensatoria" formControlName="teaCompensatoria" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('teaCompensatoria')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Número de Instrumentos</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Número de Instrumentos</mat-label>
+              <input matInput placeholder="nDeInstr" formControlName="nDeInstr" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('nDeInstr')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Total a Recibir</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Total a Recibir</mat-label>
+              <input matInput placeholder="totalARecibir" formControlName="totalARecibir" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('totalARecibir')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">TCEA Cartera</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>TCEA Cartera</mat-label>
+              <input matInput placeholder="tceaCartera" formControlName="tceaCartera" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('tceaCartera')?.errors?.['required']">
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-label class="label">Tipo de Moneda</mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Tipo de moneda</mat-label>
+                <mat-select formControlName="tipoMoneda">
+                  <mat-option *ngFor="let t of tiposdemoneda" [value]="t.value">
+                    {{ t.viewValue }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="obtenerControlCampo('tipoMoneda')?.errors?.['required']"
+                  >Complete el campo
+                </mat-error>
+            </mat-form-field>
+
+          </div><!--Columna end-->
+        
+        </div> <!--Columna Principal end-->
+        <br>
+        <div class="button-container">
+          <button mat-button class="boton-agregar"><mat-icon>person_pin</mat-icon> Registrar </button>
+          <button mat-button class="boton-cancelar" routerLink="/components/carteras/listar"> <mat-icon>close</mat-icon>Cancelar</button>
+          <br>
+        </div>
+        <br>
+        <p>{{ mensaje }}</p>
+        <p>{{ mensaje2 }}</p>
+        <br>
+      </form>
+    </div>
+  </body>
+</html>

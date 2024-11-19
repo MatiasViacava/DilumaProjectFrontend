@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <br>
+  <div style=" text-align: center;"> 
+    <h2>{{"LISTA DE LETRAS" }}</h2> 
+  </div>
+
+  <div class="container">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef hidden> ID </th>
+            <td mat-cell *matCellDef="let element" hidden> {{element.id}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="idCartera">
+            <th mat-header-cell *matHeaderCellDef > ID Cartera </th>
+            <td mat-cell *matCellDef="let element" > {{element.idCartera.id}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="idUsuario">
+            <th mat-header-cell *matHeaderCellDef > ID Usuario </th>
+            <td mat-cell *matCellDef="let element" > {{element.idUsuario.username}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="fechaDeGiro">
+            <th mat-header-cell *matHeaderCellDef > Fecha de Giro </th>
+            <td mat-cell *matCellDef="let element" > {{element.fechaDeGiro | date}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="valorNominal">
+            <th mat-header-cell *matHeaderCellDef > Valor Nominal </th>
+            <td mat-cell *matCellDef="let element" > {{element.valorNominal}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="fechaDeDscto">
+            <th mat-header-cell *matHeaderCellDef > Fecha de Descuento </th>
+            <td mat-cell *matCellDef="let element" > {{element.fechaDeDscto | date}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="nDias">
+            <th mat-header-cell *matHeaderCellDef > Número de Días </th>
+            <td mat-cell *matCellDef="let element" > {{element.nDias}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="tep">
+            <th mat-header-cell *matHeaderCellDef > TEP </th>
+            <td mat-cell *matCellDef="let element" > {{element.tep}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="d">
+            <th mat-header-cell *matHeaderCellDef > D </th>
+            <td mat-cell *matCellDef="let element" > {{element.d}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="descuento">
+            <th mat-header-cell *matHeaderCellDef > Descuento </th>
+            <td mat-cell *matCellDef="let element" > {{element.descuento}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="costesIniciales">
+            <th mat-header-cell *matHeaderCellDef > Costes Iniciales </th>
+            <td mat-cell *matCellDef="let element" > {{element.costesIniciales}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="costesFinales">
+            <th mat-header-cell *matHeaderCellDef > Costes Finales </th>
+            <td mat-cell *matCellDef="let element" > {{element.costesFinales}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="seguro">
+            <th mat-header-cell *matHeaderCellDef > Seguro </th>
+            <td mat-cell *matCellDef="let element" > {{element.seguro}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="retencion">
+            <th mat-header-cell *matHeaderCellDef > Retención </th>
+            <td mat-cell *matCellDef="let element" > {{element.retencion}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="valorNeto">
+            <th mat-header-cell *matHeaderCellDef > Valor Neto </th>
+            <td mat-cell *matCellDef="let element" > {{element.valorNeto}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="valorARecibir">
+            <th mat-header-cell *matHeaderCellDef > Valor a Recibir </th>
+            <td mat-cell *matCellDef="let element" > {{element.valorARecibir}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="flujo">
+            <th mat-header-cell *matHeaderCellDef > Flujo </th>
+            <td mat-cell *matCellDef="let element" > {{element.flujo}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="tcea">
+            <th mat-header-cell *matHeaderCellDef > TCEA </th>
+            <td mat-cell *matCellDef="let element" > {{element.tcea}} </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="tipoMoneda">
+            <th mat-header-cell *matHeaderCellDef > Tipo de Moneda </th>
+            <td mat-cell *matCellDef="let element" > {{getMonedasTipoTexto(element.tipoMoneda)}} </td>
+          </ng-container>
+
+      <!-- ACCIONES -->
+      <ng-container matColumnDef="actualizar">
+        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+        <td mat-cell *matCellDef="let element">
+          <button class="boton-actualizar"
+            mat-raised-button
+            (click)="iralink('edicion', element.id)"
+            ><mat-icon>create</mat-icon>
+          </button>
+      </td></ng-container>
+
+      <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let element">
+          <button class="boton-eliminar"
+            mat-raised-button
+            (click)="eliminar(element.id)"
+            ><mat-icon>delete</mat-icon>
+          </button>
+      </td></ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <br>
+    <mat-paginator 
+    [pageSizeOptions]="[10, 30, 50]" 
+    showFirstLastButtons aria-label="Select page">
+  </mat-paginator>
+  
+</div>
+</body>
+</html>

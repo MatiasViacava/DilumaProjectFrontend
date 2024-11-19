@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <br>
+    <h2>{{titulo }}</h2>
+
+    <div class="container" style="text-align: center">
+        
+        <form [formGroup]="form" (submit)="registrar()" class="example-form">
+
+            <mat-form-field class="example-full-width" *ngIf="edicion" hidden>
+                <mat-label>idTipoUsuario</mat-label>
+                <input matInput placeholder="idTipoUsuario" formControlName="idTipoUsuario" readonly/>
+            </mat-form-field>
+
+            <br>
+            <mat-label class="label">Ingrese el rol del usuario:</mat-label>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Rol del Usuario</mat-label>
+                <mat-select formControlName="nombreTipoUsuario">
+                    <mat-option *ngFor="let t of tipos" [value]="t.value">
+                      {{ t.viewValue }}
+                    </mat-option>
+                  </mat-select>
+
+                <mat-error *ngIf="obtenerControlCampo('nombreTipoUsuario')?.errors?.['required']">El tipo de usuario
+                    es obligatorio.
+                </mat-error>
+            </mat-form-field>
+
+            <br>
+            <mat-label class="label">Selecione el usuario:</mat-label>
+            <br>
+            <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <mat-select formControlName="usuarios">
+                    <mat-option *ngFor="let d of listaUsuarios" [value]="d.id">
+                        {{d.username}}
+                    </mat-option>
+
+                    <mat-error *ngIf="obtenerControlCampo('usuarios')?.errors?.['required']"> 
+                    </mat-error>
+                </mat-select>
+            </mat-form-field>
+            <br/>
+
+            <br>
+            <div class="button-container">
+                <button class="boton-agregar" mat-raised-button><mat-icon>library_add</mat-icon> Aceptar</button>
+                <button class="boton-cancelar" mat-raised-button routerLink="/components/tipousuario/listar"> <mat-icon>close</mat-icon> Cancelar </button>
+            </div>
+
+            <p>{{ mensaje }}</p>
+        </form>
+    </div>
+</body>
+
+</html>

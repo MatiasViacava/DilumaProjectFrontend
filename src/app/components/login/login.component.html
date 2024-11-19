@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login">
+          <h1>INICIAR SESION</h1>
+          <hr />
+          <p>Bee Organizeed</p>
+          <label for="">Usuario</label>
+          <div class="inputuser">
+            <input placeholder="Username" [(ngModel)]="username" />
+          </div>
+          <label for="">Contraseña</label>
+          <div class="inputuser">
+            <input type="password" placeholder="Password" [(ngModel)]="password" />
+          </div>
+
+          <button (click)="login()">Ingresar</button>
+          <button class="boton-regresar" routerLink="/landingpage">Regresar</button>
+      </div>
+      <div class="right">
+        <img src="assets/images/logo_amarillo.png" />
+      </div>
+    </div>
+  </body>
+</html>

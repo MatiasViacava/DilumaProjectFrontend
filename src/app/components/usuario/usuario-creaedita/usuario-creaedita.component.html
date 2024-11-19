@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h2>ㅤ</h2>
+    <div class="container" style="text-align: center">
+      <h2>{{titulo}}</h2>
+      <br />
+      <form [formGroup]="form" (submit)="registrar()" class="example-form">
+        <div class ="center">
+          <img src="../assets/images/3135715.png" alt="Logo">
+        </div>
+        <br>
+
+        <div class="contenedor-principal">
+
+          <div class="columna">
+          <br>
+            <mat-form-field class="example-full-width">
+              <mat-label>Usuario</mat-label>
+              <input matInput placeholder="Usuario" formControlName="username" maxlength="15"/>
+              <mat-error
+                *ngIf="obtenerControlCampo('username')?.errors?.['required']"
+              >
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width" *ngIf="edicion==false">
+              <mat-label>Contraseña</mat-label>
+              <input matInput placeholder="Password" formControlName="password" type="password" minlength="5"/>
+              <mat-hint class="caracterminimo">Ingrese 5 caracteres como mínimo</mat-hint>
+              <mat-error
+                *ngIf="obtenerControlCampo('password')?.errors?.['required']"
+              >
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+
+           
+           <br>
+          </div>
+
+          <div class="columna">
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombres</mat-label>
+                <input matInput placeholder="Nombres" formControlName="nombres" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*"/>
+                <mat-error
+                  *ngIf="obtenerControlCampo('nombres')?.errors?.['required']"
+                >
+                  Complete el campo
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Apellidos</mat-label>
+                <input matInput placeholder="Apellidos" formControlName="apellidos" maxlength="25" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ]*" />
+                <mat-error
+                  *ngIf="obtenerControlCampo('apellidos')?.errors?.['required']"
+                >
+                  Complete el campo
+                </mat-error>
+              </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Correo" formControlName="correo" />
+                <mat-error
+                  *ngIf="obtenerControlCampo('correo')?.errors?.['required']"
+                >
+                  Complete el campo
+                </mat-error>
+            </mat-form-field>
+            
+            <br *ngIf="edicion==false"><br *ngIf="edicion==false">
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Teléfono</mat-label>
+              <input matInput placeholder="Teléfono" formControlName="telefono" maxlength="9" pattern="[0-9]*"/>
+              <mat-error
+                *ngIf="obtenerControlCampo('telefono')?.errors?.['required']"
+              >
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+           <br>
+
+           <br *ngIf="edicion==false"><br *ngIf="edicion==false">
+
+            <mat-form-field class="example-full-width">
+              <mat-label>DNI</mat-label>
+              <input matInput placeholder="DNI" formControlName="dni" maxlength="8" pattern="[0-9]*"/>
+              <mat-error
+                *ngIf="obtenerControlCampo('telefono')?.errors?.['required']"
+              >
+                Complete el campo
+              </mat-error>
+            </mat-form-field>
+           <br>
+
+           
+
+          </div><!--Columna end-->
+        
+        </div> <!--Columna Principal end-->
+        <br>
+        <div class="button-container">
+          <button mat-button class="boton-agregar"><mat-icon>person_pin</mat-icon> Registrar </button>
+          <button mat-button class="boton-cancelar" *ngIf="role=='ADMIN' || role=='CLIENTE'" routerLink="/components/usuarios/listar"> <mat-icon>close</mat-icon>Cancelar</button>
+          <button mat-button class="boton-regresar" *ngIf="role!='ADMIN' && role!='CLIENTE'" routerLink="/landingpage"><mat-icon>keyboard_return</mat-icon>Regresar al inicio</button>
+          <br>
+        </div>
+        <br>
+        <p>{{ mensaje }}</p>
+        <br>
+        <p>{{ mensaje2 }}</p>
+      </form>
+    </div>
+  </body>
+</html>
