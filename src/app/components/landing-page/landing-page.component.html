@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets2/styles/bootstrap.css">
+    <link rel="stylesheet" href="./assets2/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./assets/images/logo_amarillo.ico">
+    <!-- <link rel="icon" href="./assets/images/logo_amarillo.ico"> -->
+
+    <title>BeeOrganized</title>
+</head>
+
+<body >
+    <div class="capa"></div>
+    <nav  class="nav-bar-container">
+        <div class="logo-content">
+            <img class="logo" src="./assets/images/BeeOrganized.png" alt="logo de la aplicación de abeja con calendarxd">
+            <div class="searching">
+                <input>
+                <img src="./assets/images/search_icon.png">
+            </div>
+        </div>
+        <div class="labeling">
+            <ul>
+                <li><a href="#nosotros">Sobre Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#app">App</a></li>
+                <li><a href="#soporte">Soporte</a></li>
+            </ul>
+        </div>
+        <div class="btn-content">
+            <button style="margin-left:2rem ;"><a routerLink="/login">Iniciar Sesión</a></button>
+            <button style="margin-left:1rem ;"><a routerLink="/components/usuarios/nuevo">Registrarse</a></button>
+        </div>
+        <div class="menu-btn">
+            <i id="btn-menu" class="fa-solid fa-bars iconmenu"></i>
+        </div>
+       
+    </nav>
+    <section class="presentation" >
+        <div class="name">
+            <div class="text-title">
+            <h1>Bee</h1>
+            <h1>Organized</h1>
+            </div>
+         
+        </div>
+        <div class="descripcion-slogan" style="overflow-y: hidden;">
+            <div class="mediaquerytitle"><h2>La organización es la base del éxito.</h2></div>
+            <h2 class="orga-title">La organización</h2>
+            <h2 class="base-title"> es la base del éxito.</h2>
+            <h3>Se parte del <b>cambio</b> con nosotros</h3>
+            <button id="btn-know">Conocenos</button>
+        </div>
+ 
+    </section>
+    <section class="sobre-nosotros" id="nosotros">
+        <div class="encabezado">
+            <div class="titulo-nosotros">
+                <h2>SOBRE NOSOTROS</h2>
+            </div>
+        </div>
+        <div class="first-text">
+            <p>Somos un grupo de estudiantes de la carrera de Ingeniería de Sistemas de la Información de la Universidad Peruana de Ciencias Aplicadas (UPC). Como cualquier estudiante, nosotros pasamos por esos primeros ciclos en los que comienzas una nueva etapa en tu vida, un mundo completamente diferente. Al igual que varios de ustedes, en los primeros ciclos nos afectó un poco el cambio de la vida escolar a la vida universitaria y uno de los principales problemas que enfrentamos fue la falta de una adecuada organización, que afectaba nuestro rendimiento académcio así como en nuestra vida personal. Es por ello que presentamos a BeeOrganized.
+            </p>
+          </div>
+          <div class="second-part">
+            <img src="./assets/images/logo_amarillo.png" alt="logo de la aplicación de abeja con calendario">
+          <div class="part-new">
+                  
+                  <h4>Bee Organized</h4>
+                  <div class="line-bee"></div>
+               
+                  <p>   Esta es una aplicación pensada en ayudar a todos esos estudiantes
+                    universitarios que buscan mejorar su organizacióm y el manejo optimo
+                    de su tiempo en las diversas actividades de su vida, dentro y fuera
+                    de la universidad.</p>
+              </div>
+              
+          </div>
+      </section>
+      <section class="servicios" id="servicios">
+          <div class="title-content-ser">
+              <div class="title-ser">
+                  <h2>Nuestros Servicios</h2>
+              </div>
+          </div>
+          
+          <div class="servicios-cont">
+              <div class="carousel-cont">
+                  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                      <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                      </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img  src="./assets/images/kaleidico-3V8xo5Gbusk-unsplash.jpg" class="d-block w-100" alt="persona mostrandole indicaciones en una pizarra a otra persona">
+                    </div>
+                    <div class="carousel-item">
+                      <img  src="./assets/images/adolfo-felix-Yi9-QIObQ1o-unsplash.jpg" class="d-block w-100" alt="persona escribiendo en una lista sus actividades">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="./assets/images/ella-de-kross-AY43aA44KCI-unsplash.jpg" class="d-block w-100" alt="figuras pegadas en un reja que hacen referencia a recuerdos">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="./assets/images/chermiti-mohamed-oVi586BZ2lY-unsplash.jpg" class="d-block w-100" alt="persona peliroja sonriendo">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="./assets/images/jason-goodman-Oalh2MojUuk-unsplash.jpg" class="d-block w-100" alt="persona explicando post its que estan pegados en una pared">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span style="background-color:black;" class="carousel-control-prev-icon" id="back" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span style="background-color:black;" class="carousel-control-next-icon" id="next" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+               
+              </div>
+                <div class="descripcion-service">
+                  <div class="serve-cont" id="slider-cont">
+                     <div class="cont">
+                          <div class="titulo">
+                              <h3>Organización</h3>
+                              <p>01/05</p>
+                          </div>
+                          <div class="content-info">
+                              <p>
+                                Entre nuestros beneficios, tenemos un horario que les permite
+                                a nuestros usuarios organizarse entre sus horarios de clase,
+                                libre y de alimentación. Gracias a ello pueden tener una forma
+                                estable de realizar sus actividades y tener una rutina
+                                saludable que reduzca y finalmente evite daños perjudiciales
+                                al usuario debido al estrés generado por la desorganización y
+                                que acarree enfermedades a largo plazo. Nuestro horario es de
+                                uso amigable, con indicadores tanto para agregar, borrar y
+                                actualizar elementos, todo para que el usuario tenga una buena
+                                experiencia.
+                              </p>
+                          </div>
+                     </div>
+                     <div class="cont">
+                          <div class="titulo">
+                              <h3>Lista de Actividades</h3>
+                              <p>02/05</p>
+                          </div>
+                          <div class="content-info">
+                              <p>
+                                Nuestra aplicación cuenta con una lista de actividades para
+                                que el usuario pueda organizar sus actividades diarias,
+                                semanales y mensuales. Esta lista de actividades es de uso
+                                amigable, con indicadores tanto para agregar, borrar y
+                                actualizar elementos, todo para que el usuario tenga una buena
+                                experiencia. Por otro lado, también permite priorizar las
+                                actividades de mayor importancia, filtrarlas por fecha,
+                                mostrar el estado (Iniciando, en proceso, finalizada). El
+                                apartado de agregar actividades permite registrar la fecha, la
+                                hora, la prioridad y la descripción. De esta forma el usuario
+                                puede tener un control de sus actividades y no olvidar
+                                ninguna.
+                              </p>
+                          </div>
+                      </div>
+                      <div class="cont">
+                          <div class="titulo">
+                              <h3>Recordatorios</h3>
+                              <p>03/05</p>
+                          </div>
+                          <div class="content-info">
+                              <p>
+                                Entre nuestras principales carecteristicas de nuestra
+                                aplicacion, podemos resaltar nuestros recordatorios, los
+                                cuales enviaremos al usuario para hacerle presente sobre sus
+                                trabajos pendientes con un tiempo de anticipacion, de esta
+                                forma evitaremos la procastinacion, acción muy común en los
+                                jovenes universitarios hoy en dia. Ademas nuestros
+                                recordatorios tendran un diseño innovador para que puedan ser
+                                identificados con gran facilidad por el usuario y ademas lo
+                                configuraremos de forma que se envien cada cierto tiempo al
+                                usuario y que no se incomodo para el mismo, con esto
+                                lograremos darle la mejor experiencia dentro de la aplicación
+                                al usuario.
+                              </p>
+                          </div>
+                      </div>
+                      <div class="cont">
+                          <div class="titulo">
+                              <h3>Flexibilidad</h3>
+                              <p>04/05</p>
+                          </div>
+                          <div class="content-info">
+                              <p>
+                                Gracias a nuestro sistema intuitivo, nuestra app le genera al
+                                usuario distintas distribuciones en cuanto a sus horarios se
+                                refiere con el objetivo de ofrecerle una variedad de opciones
+                                para que su organización sea óptima y de su agrado,
+                                permitiendole que pueda organizarse correctamente según sus
+                                preferencias personales y poder cambiarlos segun corresponda
+                                para tenga flexibilidad según su entorno constantemente
+                                cambiante como lo son la semana de examenes o de exposiciones
+                                por poner algunos ejemplos.
+                              </p>
+                          </div>
+                      </div>
+                      <div class="cont">
+                          <div class="titulo">
+                              <h3>Notas Rápidas</h3>
+                              <p>05/05</p>
+                          </div>
+                          <div class="content-info">
+                              <p>
+                                Dentro de lo que significa tener una adecuada organización es
+                  bueno tener notas pequeñas sobre cosas puntuales que debemos
+                  recordar o tener en cuenta en un futuro, como el formato del
+                  archivo del trabajo grupal que debo presentar o la duración
+                  máxima de mi video de exposicióm. Es por ello que se ha
+                  desarrollado un apartado de notas rápidas dedicado con
+                  diferentes funcionalidades dentro del aplicativo. El usuario
+                  podrá realizar notas rápidas en cualquier momento, guardarlas,
+                  editarlas o eliminarlas. Esto ayudará a que puedan tener una
+                  mejor organización y a recordar detalles importantes de
+                  futuras actividades o tareas y trabajos a presentar.
+                              </p>
+                          </div>
+                      </div>
+                  </div>    
+                </div>
+                
+          </div>
+        
+      </section>
+      <section class="app" id="app">
+          <div class="title-cont-app">
+              <div class="title-app">
+                  <h2>NUESTRA APP</h2>
+              </div>
+          </div>
+          <div class="content-apps">
+              <div class="android">
+                  <h3>Android</h3>
+                  <p style="color: white;">Disponible en Play Store</p>
+                  <button>Descargar</button>
+                  <button id="btn-vermas-android">Ver más</button>
+               
+              </div>
+              <div class="ios">
+                  <h3>iOS</h3>
+                  <p style="color: white;">Disponible en App Store</p>
+                  <button>Descargar</button>
+                  <button id="btn-vermas-ios">Ver más</button>
+                  
+              </div>
+          </div>
+      </section>
+      <section class="soporte" id="soporte">
+          <div class="title-content">
+              <div class="main-title">
+                  <h2>Soporte</h2>
+              </div>
+              
+  
+          </div>
+          <div class="soporte-content">
+              <div class="mensaje">
+                  <div class="title-cont-map">
+                      <h3>Dejanos Saber</h3>
+                      <div class="line-cont-map"></div>
+                  </div>
+                  <div class="content-form">
+                      <div class="nombres">
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput1" class="form-label" style="font-weight:bold ;">Nombres</label>
+                              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Dario Joaquin">
+                          </div>
+                          <div class="mb-3 apellido">
+                              <label for="exampleFormControlInput1" class="form-label"  style="font-weight:bold ;">Apellidos</label>
+                              <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="Diaz Chau">
+                          </div>
+                      </div>
+                      <div class="correo-form">
+                          <div class="mb-3">
+                              <label for="exampleFormControlInput1" class="form-label" style="font-weight:bold ;">Correo</label>
+                              <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="nombre@example.com">
+                          </div>
+                      </div>
+                      <div class="mensaje-cont" style="overflow-y: hidden;">
+                          <div class="mb-3" style="overflow-y: hidden;">
+                              <label for="exampleFormControlTextarea1" class="form-label"  style="font-weight:bold ;">Ayudanos a mejorar</label>
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Redacta tu comentario"></textarea>
+                          </div>
+                          <button>Enviar</button>
+                      </div>
+                  </div>
+                  
+              </div>
+              <div class="content-mapa"> 
+                  <div class="title-cont-map">
+                  <h3 style="overflow: hidden;">Contáctanos</h3>
+                  <div class="line-cont-map"></div>
+                  </div>
+                  <div class="content-map">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.1158860496607!2d-76.965603284037!3d-12.104218346270331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c70ab77498c1%3A0xcce9f50642e7c684!2sUniversidad%20Peruana%20de%20Ciencias%20Aplicadas!5e0!3m2!1ses-419!2spe!4v1665246661003!5m2!1ses-419!2spe" class="mapa" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                 
+                  <div class="contactanos">
+                      <div class="direccion" style="overflow: hidden;">
+                          <img src="./assets/images/pin.png"><p>Prolongación Primavera 2390, Santiago de Surco 15023</p>
+                      </div>
+                      <div class="tel-correo" style="overflow: hidden;">
+                          
+                              <div class="telefono" style="overflow: hidden;">
+                                  <img src="./assets/images/llamada-telefonica.png"><p>Telefono: 997846040</p>
+                              </div>
+                              <div class="correo" style="overflow: hidden;">
+                                  <img src="./assets/images/gmail.png"><p>Correo: beeorganized&#64;gmail.com</p>
+                              </div>
+                             
+                         
+                      </div>
+                  </div>
+              </div>
+          </div>
+       
+      </section>
+      <section class="footer">
+          <footer class="content-footer">
+              <div class="top-footer">
+                  <div class="title-footer">
+                      <h3>Bee Organized</h3>
+                      <div class="sub-line-footer"></div>
+                  </div>
+                  <div class="list-content">
+                      <ul>
+                          <li style="font-weight: bold;">Aplicación Movil</li>
+                          <li>App Store</li>
+                          <li>Play Store</li>
+                      </ul>
+                      <ul>
+                          <li style="font-weight: bold;">Comunidad</li>
+                          <li>Comentarios</li>
+                          <li>Calificación</li>
+                      </ul>
+                      <ul>
+                          <li style="font-weight: bold;">Empresa</li>
+                          <li>Sobre Nosotros</li>
+                          <li>Contáctanos</li>
+                      </ul>
+                      
+                     
+                  </div>
+              </div>
+              <div class="line-footer"></div>
+              <div class="bottom-footer">
+                  <p>© BeeOrganized, Inc. 2022.</p>
+                  <div class="redes">
+                      <p>Siguenos</p>
+                      <ul>
+                          <li><a href="https://www.facebook.com/"><img src="./assets/images/facebook.png"></a></li>
+                          <li><a href="https://www.tiktok.com/foryou?is_copy_url=1&is_from_webapp=v1"><img src="./assets/images/tik-tok.png"></a></li>
+                          <li><a href="https://www.instagram.com/"><img src="./assets/images/instagram.png"></a></li>
+                      </ul>
+                  </div>
+              </div>
+  
+          </footer>
+      </section>
+      <div class="filtro" id="filtro"></div>
+      <div class="video" id="video-android">
+        <img id="equis-android" class="equis" src="./assets/images/1727490.svg">
+        <iframe id="youtube_player1" class="frame" src="https://www.youtube.com/embed/Wxgpe6djCus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <button id="btn-prot-android">Ver prototipo</button>
+      </div>
+      <div class="video" id="video-ios">
+        <img id="equis-ios" class="equis" src="./assets/images/1727490.svg">
+        <iframe id="youtube_player" class="frame" src="https://www.youtube.com/embed/dgtbuKjgTJk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <button id="btn-prot-ios">Ver prototipo</button>
+      </div>
+    
+  </body>
+  </html>

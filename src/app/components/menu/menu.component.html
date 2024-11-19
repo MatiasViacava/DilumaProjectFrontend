@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<footer>
+  <mat-toolbar [ngClass]="{'color-admin': role == 'ADMIN', 'color-estudiante': role == 'CLIENTE'}" *ngIf="verificar()" [style.background-color]="colorActivo">
+    <button (click)="drawer.toggle()"  mat-icon-button> <mat-icon>menu</mat-icon> </button> <!--Ayuda a que se oculte-->
+    <span>DILUMA</span>
+    <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+    <button mat-icon-button><mat-icon>sms</mat-icon></button>
+    <label>{{role}} {{username}}, {{"con la id de usuario"}} {{id}}</label>
+</mat-toolbar>
+</footer>
+<body>
+  
+<mat-drawer-container autosize>
+  <mat-drawer #drawer opened="false" mode="push" position="start"> <!--over: Para darle tono oscuro al darle clic al menu, push: mueve el contenido hacia la derecha, side:se queda ahi, end: el menu aparece a la derecha-->
+    <mat-nav-list>
+      <mat-list-item>
+        <button mat-button (click)="cerrar()"><mat-icon>home</mat-icon> {{"Cerrar sesión"}} </button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-button [matMenuTriggerFor]="menuUsuarios" *ngIf="role == 'CLIENTE' || role == 'ADMIN'"><mat-icon>people</mat-icon>{{UsuarioAltTitulo }}</button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-button [matMenuTriggerFor]="menuLetras" *ngIf="role == 'CLIENTE' || role == 'ADMIN'"><mat-icon>schedule</mat-icon>{{"Letras" }}</button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-button [matMenuTriggerFor]="menuCarteras" *ngIf="role == 'ADMIN'"><mat-icon>assignment</mat-icon>{{"Carteras" }}</button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-button [matMenuTriggerFor]="menuTipoUsuario" *ngIf="role == 'ADMIN'"><mat-icon>person</mat-icon>{{"Tipos de Usuarios" }}</button>
+      </mat-list-item>
+      
+      <mat-list-item>
+        <button mat-button [matMenuTriggerFor]="menuReportes" *ngIf="role == 'ADMIN'"><mat-icon>markunread_mailbox</mat-icon>{{"Reportes" }}</button>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div style="text-align: center; min-height: 800px;"> <!--1200px-->
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+  <mat-menu #menuUsuarios="matMenu">
+    <button mat-menu-item (click)="iralink('usuarios','nuevo')" *ngIf="role == 'ADMIN'"><mat-icon>dns</mat-icon> {{"Registrar" }}</button>
+    <button mat-menu-item (click)="iralink('usuarios','listar')"><mat-icon>dns</mat-icon>{{AltBoton }}</button>
+  </mat-menu>
+
+  <mat-menu #menuLetras="matMenu">
+    <button mat-menu-item (click)="iralink('letras','nuevo')"><mat-icon>dns</mat-icon>{{"Registrar" }}</button>
+    <button mat-menu-item (click)="iralink('letras','listar')"><mat-icon>dns</mat-icon>{{"Listar" }}</button>
+  </mat-menu>
+  
+  <mat-menu #menuCarteras="matMenu">
+    <button mat-menu-item (click)="iralink('carteras','nuevo')" *ngIf="role == 'ADMIN'"><mat-icon>dns</mat-icon>{{"Registrar" }}</button>
+    <button mat-menu-item (click)="iralink('carteras','listar')"><mat-icon>dns</mat-icon>{{AltBoton }}</button>
+  </mat-menu>
+  
+  <mat-menu #menuTipoActividad="matMenu">
+    <button mat-menu-item (click)="iralink('tipoactividad','nuevo')"><mat-icon>dns</mat-icon>{{"Registrar" }}</button>
+    <button mat-menu-item (click)="iralink('tipoactividad','listar')"><mat-icon>dns</mat-icon>{{"Listar" }}</button>
+  </mat-menu>
+
+  <mat-menu #menuTipoUsuario="matMenu">
+    <button mat-menu-item (click)="iralink('tipousuario','nuevo')"><mat-icon>dns</mat-icon>{{"Registrar" }}</button>
+    <button mat-menu-item (click)="iralink('tipousuario','listar')"><mat-icon>dns</mat-icon>{{"Listar" }}</button>
+  </mat-menu>
+  
+  <mat-menu #menuReportes="matMenu">
+    <button mat-menu-item routerLink="/components/reportes/reportejulio"><mat-icon>dns</mat-icon>{{"Reporte 1"}}</button>
+    <button mat-menu-item routerLink="/components/reportes/reportefabian"><mat-icon>dns</mat-icon>{{"Reporte 2"}}</button>
+    <button mat-menu-item routerLink="/components/reportes/reportesebastian"><mat-icon>dns</mat-icon>{{"Reporte 3"}}</button>
+    <button mat-menu-item routerLink="/components/reportes/reportejuan"><mat-icon>dns</mat-icon>{{"Reporte 4"}}</button>
+    <button mat-menu-item routerLink="/components/reportes/reporterafael"><mat-icon>dns</mat-icon>{{"Reporte 5"}}</button>
+  </mat-menu>
+    
+</mat-drawer-container>
+</body>
+</html>
+
+

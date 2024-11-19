@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /*Para que tenga color en toda la página*/
+  }
+    
+  .container {
+    width: 30%; /* Ajusta este porcentaje según tus necesidades */
+    background-color: #fff; /*COLOR DE LA TABLA*/
+    border: 30px solid #F0C481; /*Color del borde de la TABLA*/
+    padding: 30px;
+    margin: 20px auto; /*Espacio entre el menu y el contenedor*/
+  }
+  
+  .label{
+    font-size: 20px; /* Aumenta el tamaño de la fuente */ 
+    text-align: left; /* Alinea el texto a la izquierda */
+    width: 79%;
+    margin-bottom: 10px; /* Esto añade un espacio de 10px debajo del mat-label */
+    display:inline-block; /* Para alinearlo al mat form field */
+  }
+  
+  mat-form-field {
+    width: 80%;
+  }
+  
+  /* Estilos para los botones */
+  .button-container {
+    display: block; /* Cambiado de flex a block */
+    justify-content: center;
+    gap: 20px; /* Agrega un espacio entre los botones */
+  }
+  
+  .boton-agregar{
+    background-color: #6eb8db;
+    color: white; /* Color del texto */
+    width: 70%; /* Cambiado de 80% a auto */
+    margin-bottom: 20px; /* Agregado */
+  }
+  .boton-cancelar{
+    background-color: #b8cd51;
+    color: white; /* Color del texto */
+    width: 70%; /* Cambiado de 80% a auto */
+    margin-bottom: 20px; /* Agregado */
+  }
+  
+  
