@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <h2>ㅤ</h2>
+    <h2></h2>
     <div class="container" style="text-align: center">
       <h2>{{titulo}}</h2>
       <br />
@@ -20,35 +20,39 @@
 
           <div class="columna">
           <br>
-          
+        
           <mat-label class="label">Selecione la Cartera:</mat-label>
           <mat-form-field>
-              <mat-label>Cartera</mat-label>
-              <mat-select formControlName="idCartera">
-                  <mat-option *ngFor="let d of listaCarteras" [value]="d.id">
-                      {{d.id}}
-                  </mat-option>
-
-                  <mat-error *ngIf="obtenerControlCampo('idCartera')?.errors?.['required']"> 
-                  </mat-error>
-              </mat-select>
+            <mat-label>Cartera</mat-label>
+            <mat-select formControlName="idCartera">
+              <mat-option *ngFor="let c of listaCarteras" [value]="c .id">
+                {{ c .id }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="obtenerControlCampo('idCartera')?.errors?.['required']">
+              El campo es obligatorio.
+            </mat-error>
           </mat-form-field>
           <br/>
+
 
           <br>
-          <mat-label class="label">Selecione el Usuario:</mat-label>
-          <mat-form-field>
-              <mat-label>Usuario</mat-label>
-              <mat-select formControlName="idUsuario">
-                  <mat-option *ngFor="let u of listaUsuarios" [value]="u.id">
-                      {{u.username}}
-                  </mat-option>
-
-                  <mat-error *ngIf="obtenerControlCampo('idUsuario')?.errors?.['required']"> 
-                  </mat-error>
-              </mat-select>
+          <mat-label class="label" hidden>Seleccione el Usuario:</mat-label>
+          <mat-form-field hidden>
+            <mat-label>Usuario</mat-label>
+            <mat-select formControlName="idUsuario" >
+              <mat-option *ngFor="let u of listaUsuarios" [value]="u.id">
+                {{ u.username }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="obtenerControlCampo('idUsuario')?.errors?.['required']">
+              El campo Usuario es obligatorio.
+            </mat-error>
           </mat-form-field>
           <br/>
+
+
+
           <br />
           <mat-label class="label">Seleccione la fecha de Giro</mat-label>
           <mat-form-field appearance="fill" class="example-full-width">
@@ -110,18 +114,18 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Tasa Efectiva Periódica (TEP)</mat-label>
+              <mat-label class="label">Tasa Efectiva Periódica (TEP) (%)</mat-label>
               <mat-form-field class="example-full-width">
-                <mat-label>Tasa Efectiva Periódica (TEP)</mat-label>
+                <mat-label>Tasa Efectiva Periódica (TEP) (%)</mat-label>
                 <input matInput placeholder="TEP" formControlName="tep" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('tep')?.errors?.['required']">
                   Complete el campo
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">d</mat-label>
+              <mat-label class="label">d(%)</mat-label>
               <mat-form-field class="example-full-width">
-                <mat-label>D</mat-label>
+                <mat-label>D (%)</mat-label>
                 <input matInput placeholder="D" formControlName="d" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('d')?.errors?.['required']">
                   Complete el campo
@@ -206,7 +210,7 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">TCEA</mat-label>
+              <mat-label class="label">TCEA (%)</mat-label>
               <mat-form-field class="example-full-width">
                 <mat-label>TCEA</mat-label>
                 <input matInput placeholder="TCEA" formControlName="tcea" type="number" />

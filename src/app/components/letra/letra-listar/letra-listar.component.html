@@ -17,8 +17,8 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef hidden> ID </th>
-            <td mat-cell *matCellDef="let element" hidden> {{element.id}} </td>
+            <th mat-header-cell *matHeaderCellDef > ID </th>
+            <td mat-cell *matCellDef="let element" > {{element.id}} </td>
           </ng-container>
           
           <ng-container matColumnDef="idCartera">
@@ -52,58 +52,58 @@
           </ng-container>
           
           <ng-container matColumnDef="tep">
-            <th mat-header-cell *matHeaderCellDef > TEP </th>
-            <td mat-cell *matCellDef="let element" > {{element.tep}} </td>
+            <th mat-header-cell *matHeaderCellDef > TEP (%)</th>
+            <td mat-cell *matCellDef="let element" > {{element.tep.toFixed(3)}}% </td>
           </ng-container>
           
           <ng-container matColumnDef="d">
-            <th mat-header-cell *matHeaderCellDef > D </th>
-            <td mat-cell *matCellDef="let element" > {{element.d}} </td>
+            <th mat-header-cell *matHeaderCellDef > D (%)</th>
+            <td mat-cell *matCellDef="let element" > {{element.d.toFixed(3)}}% </td>
           </ng-container>
           
           <ng-container matColumnDef="descuento">
             <th mat-header-cell *matHeaderCellDef > Descuento </th>
-            <td mat-cell *matCellDef="let element" > {{element.descuento}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.descuento.toFixed(2)}} </td>
           </ng-container>
           
           <ng-container matColumnDef="costesIniciales">
             <th mat-header-cell *matHeaderCellDef > Costes Iniciales </th>
-            <td mat-cell *matCellDef="let element" > {{element.costesIniciales}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.costesIniciales.toFixed(2)}} </td>
           </ng-container>
           
           <ng-container matColumnDef="costesFinales">
             <th mat-header-cell *matHeaderCellDef > Costes Finales </th>
-            <td mat-cell *matCellDef="let element" > {{element.costesFinales}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.costesFinales.toFixed(2)}} </td>
           </ng-container>
           
           <ng-container matColumnDef="seguro">
             <th mat-header-cell *matHeaderCellDef > Seguro </th>
-            <td mat-cell *matCellDef="let element" > {{element.seguro}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.seguro.toFixed(2)}} </td>
           </ng-container>
           
           <ng-container matColumnDef="retencion">
             <th mat-header-cell *matHeaderCellDef > Retención </th>
-            <td mat-cell *matCellDef="let element" > {{element.retencion}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.retencion.toFixed(2)}} </td>
           </ng-container>
           
           <ng-container matColumnDef="valorNeto">
             <th mat-header-cell *matHeaderCellDef > Valor Neto </th>
-            <td mat-cell *matCellDef="let element" > {{element.valorNeto}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.valorNeto.toFixed(2)}} </td>
           </ng-container>
           
           <ng-container matColumnDef="valorARecibir">
             <th mat-header-cell *matHeaderCellDef > Valor a Recibir </th>
-            <td mat-cell *matCellDef="let element" > {{element.valorARecibir}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.valorARecibir.toFixed(2)}} </td>
           </ng-container>
           
           <ng-container matColumnDef="flujo">
             <th mat-header-cell *matHeaderCellDef > Flujo </th>
-            <td mat-cell *matCellDef="let element" > {{element.flujo}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.flujo.toFixed(2)}} </td>
           </ng-container>
           
           <ng-container matColumnDef="tcea">
-            <th mat-header-cell *matHeaderCellDef > TCEA </th>
-            <td mat-cell *matCellDef="let element" > {{element.tcea}} </td>
+            <th mat-header-cell *matHeaderCellDef > TCEA (%)</th>
+            <td mat-cell *matCellDef="let element" > {{element.tcea.toFixed(4)}}% </td>
           </ng-container>
           
           <ng-container matColumnDef="tipoMoneda">
