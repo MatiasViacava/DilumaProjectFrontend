@@ -58,12 +58,12 @@
 
   <mat-menu #menuLetras="matMenu">
     <button mat-menu-item (click)="iralink('letras','nuevo')"><mat-icon>dns</mat-icon>{{"Registrar" }}</button>
-    <button mat-menu-item (click)="iralink('letras','listar')"><mat-icon>dns</mat-icon>{{"Listar" }}</button>
+    <button mat-menu-item (click)="redirigirYRecargar('/components/letras/listar')"><mat-icon>dns</mat-icon>{{"Listar" }}</button>
   </mat-menu>
   
   <mat-menu #menuCarteras="matMenu">
     <button mat-menu-item (click)="iralink('carteras','nuevo')" *ngIf="role == 'ADMIN'"><mat-icon>dns</mat-icon>{{"Registrar" }}</button>
-    <button mat-menu-item (click)="iralink('carteras','listar')"><mat-icon>dns</mat-icon>{{AltBoton }}</button>
+    <button mat-menu-item (click)="redirigirYRecargar('/components/carteras/listar')"><mat-icon>dns</mat-icon>{{AltBoton }}</button>
   </mat-menu>
   
   <mat-menu #menuTipoActividad="matMenu">

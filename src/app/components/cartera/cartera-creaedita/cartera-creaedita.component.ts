@@ -80,17 +80,17 @@ export class CarteraCreaeditaComponent {
       retencion: [0.0, [Validators.required, Validators.min(0)]],
       retencionTipo: [0, [Validators.required, Validators.min(0)]],
       teaCompensatoria: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
-      nDeInstr: [0, [Validators.required, Validators.min(1)]],
+      nDeInstr: [0],
       totalARecibir: [0.0, [Validators.required, Validators.min(0)]],
       tceaCartera: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
-      tipoMoneda: [0, [Validators.required, Validators.min(0)]]
+      tipoMoneda: [1, [Validators.required, Validators.min(0)]]
     });
 
     this.route.params.subscribe((data: Params) => {
       this.id = data['id']; //xd
       this.edicion = data['id'] != null;
       if (this.edicion) {
-        this.titulo="Editar cartera"
+        this.titulo="Editar cartera " + this.id
       }
       this.init();
     });
