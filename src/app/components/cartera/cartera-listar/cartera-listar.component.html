@@ -11,10 +11,8 @@
   <div style=" text-align: center;"> 
     <h2>{{"LISTA DE CARTERAS" }}</h2> 
   </div>
-
-  <div class="container">
-
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div class="container" style="overflow-x: auto;">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="min-width: 1200px;">
 
         <ng-container matColumnDef="id"> 
             <th mat-header-cell *matHeaderCellDef> ID </th> 
@@ -33,17 +31,17 @@
 
           <ng-container matColumnDef="comisionActivacion"> 
             <th mat-header-cell *matHeaderCellDef> Comisión Activación</th> 
-            <td mat-cell *matCellDef="let element"> {{element.comisionActivacion}} </td> 
+            <td mat-cell *matCellDef="let element"> {{ element.tipoMoneda === 1 ? 'S/.' : element.tipoMoneda === 2 ? '$' : '(?)' }} {{element.comisionActivacion}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="comisionActivacionTipo"> 
             <th mat-header-cell *matHeaderCellDef> Comisión Activación Tipo </th> 
-            <td mat-cell *matCellDef="let element"> {{element.comisionActivacionTipo}} </td> 
+            <td mat-cell *matCellDef="let element"> {{getTiposTexto(element.comisionActivacionTipo)}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="fotocopias"> 
             <th mat-header-cell *matHeaderCellDef> Fotocopias </th> 
-            <td mat-cell *matCellDef="let element"> {{element.fotocopias}} </td> 
+            <td mat-cell *matCellDef="let element"> {{ element.tipoMoneda === 1 ? 'S/.' : element.tipoMoneda === 2 ? '$' : '(?)' }} {{element.fotocopias}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="fotocopiasTipo"> 
@@ -53,7 +51,7 @@
           
           <ng-container matColumnDef="estudioDeTitulos"> 
             <th mat-header-cell *matHeaderCellDef> Estudio de Títulos </th> 
-            <td mat-cell *matCellDef="let element"> {{element.estudioDeTitulos}} </td> 
+            <td mat-cell *matCellDef="let element"> {{ element.tipoMoneda === 1 ? 'S/.' : element.tipoMoneda === 2 ? '$' : '(?)' }} {{element.estudioDeTitulos}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="estudioDeTitulosTipo"> 
@@ -63,7 +61,7 @@
           
           <ng-container matColumnDef="gastosAdministrativos"> 
             <th mat-header-cell *matHeaderCellDef> Gastos Administrativos </th> 
-            <td mat-cell *matCellDef="let element"> {{element.gastosAdministrativos}} </td> 
+            <td mat-cell *matCellDef="let element"> {{ element.tipoMoneda === 1 ? 'S/.' : element.tipoMoneda === 2 ? '$' : '(?)' }} {{element.gastosAdministrativos}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="gastosAdministrativosTipo"> 
@@ -73,7 +71,7 @@
           
           <ng-container matColumnDef="portes"> 
             <th mat-header-cell *matHeaderCellDef> Portes </th> 
-            <td mat-cell *matCellDef="let element"> {{element.portes}} </td> 
+            <td mat-cell *matCellDef="let element"> {{ element.tipoMoneda === 1 ? 'S/.' : element.tipoMoneda === 2 ? '$' : '(?)' }} {{element.portes}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="portesTipo"> 
@@ -82,32 +80,32 @@
           </ng-container>
           
           <ng-container matColumnDef="seguro"> 
-            <th mat-header-cell *matHeaderCellDef> Seguro </th> 
-            <td mat-cell *matCellDef="let element"> {{element.seguro}} </td> 
+            <th mat-header-cell *matHeaderCellDef> Seguro (%) </th> 
+            <td mat-cell *matCellDef="let element"> {{element.seguro}}% </td> 
           </ng-container>
           
           <ng-container matColumnDef="seguroTipo"> 
-            <th mat-header-cell *matHeaderCellDef> Seguro Tipo </th> 
-            <td mat-cell *matCellDef="let element"> {{getTiposTexto(element.seguroTipo)}} </td> 
+            <th mat-header-cell *matHeaderCellDef hidden> Seguro Tipo </th> 
+            <td mat-cell *matCellDef="let element" hidden> {{getTiposTexto(element.seguroTipo)}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="retencion"> 
             <th mat-header-cell *matHeaderCellDef> Retención </th> 
-            <td mat-cell *matCellDef="let element"> {{element.retencion}} </td> 
+            <td mat-cell *matCellDef="let element"> {{element.retencion}}% </td> 
           </ng-container>
           
           <ng-container matColumnDef="retencionTipo"> 
-            <th mat-header-cell *matHeaderCellDef> Retención Tipo </th> 
-            <td mat-cell *matCellDef="let element"> {{getTiposTexto(element.retencionTipo)}} </td> 
+            <th mat-header-cell *matHeaderCellDef hidden> Retención Tipo </th> 
+            <td mat-cell *matCellDef="let element" hidden> {{getTiposTexto(element.retencionTipo)}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="teaCompensatoria"> 
-            <th mat-header-cell *matHeaderCellDef> Tasa Efectiva Anual Compensatoria </th> 
-            <td mat-cell *matCellDef="let element"> {{element.teaCompensatoria}} </td> 
+            <th mat-header-cell *matHeaderCellDef> TEA Compensatoria </th> 
+            <td mat-cell *matCellDef="let element"> {{element.teaCompensatoria}}% </td> 
           </ng-container>
           
           <ng-container matColumnDef="nDeInstr"> 
-            <th mat-header-cell *matHeaderCellDef> Número de Instrumentos </th> 
+            <th mat-header-cell *matHeaderCellDef> Num. Letras desc. </th> 
             <td mat-cell *matCellDef="let element"> {{element.nDeInstr}} </td> 
           </ng-container>
           
@@ -117,8 +115,8 @@
           </ng-container>
           
           <ng-container matColumnDef="tceaCartera"> 
-            <th mat-header-cell *matHeaderCellDef> TCEA Cartera </th> 
-            <td mat-cell *matCellDef="let element"> {{element.tceaCartera}} </td> 
+            <th mat-header-cell *matHeaderCellDef> TCEA Cartera (%)</th> 
+            <td mat-cell *matCellDef="let element"> {{(element.tceaCartera * 100).toFixed(3)}}% </td> 
           </ng-container>
           
           <ng-container matColumnDef="tipoMoneda"> 
@@ -142,7 +140,7 @@
         <td mat-cell *matCellDef="let element">
           <button class="boton-eliminar"
             mat-raised-button
-            (click)="eliminar(element.idTipoUsuario)"
+            (click)="eliminar(element.id)"
             ><mat-icon>delete</mat-icon>
           </button>
       </td></ng-container>
@@ -151,12 +149,13 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <br>
-    <mat-paginator 
-    [pageSizeOptions]="[10, 30, 50]" 
-    showFirstLastButtons aria-label="Select page">
-  </mat-paginator>
+
   
 </div>
+<br>
+<mat-paginator 
+[pageSizeOptions]="[10, 30, 50]" 
+showFirstLastButtons aria-label="Select page">
+</mat-paginator>
 </body>
 </html>

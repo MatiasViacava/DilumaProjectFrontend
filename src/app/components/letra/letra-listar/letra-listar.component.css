@@ -7,7 +7,7 @@ body {
   }
   .center {
     text-align: center;
-    color: #333;
+    color: #f5c2c2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,10 +15,11 @@ body {
   }
   
   .container {
-    width: 60%; /* Ajusta este porcentaje según tus necesidades */
+
+    width: 100%; /* Ajusta este porcentaje según tus necesidades */
     background-color: #fff; /*COLOR DE LA TABLA*/
-    border: 30px solid #F0C481; /*Color del borde de la TABLA*/
-    padding: 30px;
+    border: 10px solid #F0C481; /*Color del borde de la TABLA*/
+    padding: 0px;
   }
   
   
@@ -51,4 +52,15 @@ body {
   .boton-eliminar {
   background-color: #8BC34A; /* Color amarillo */
   color: white; /* Color del texto */
+  }
+
+  table {
+    width: 100%;
+    min-width: 1000px; /* Cambia según el tamaño deseado */
+  }
+  
+  th, td {
+    white-space: nowrap; /* Evita que el contenido se corte */
+    text-align: center;    /* Alinea todo a la izquierda */
+    font-size: 100%
   }

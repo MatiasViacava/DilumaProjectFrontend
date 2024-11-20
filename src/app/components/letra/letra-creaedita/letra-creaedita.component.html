@@ -14,29 +14,25 @@
       <form [formGroup]="form" (submit)="registrar()" class="example-form">
         <div class ="center">
         </div>
-        <br>
 
         <div class="contenedor-principal">
 
           <div class="columna">
-          <br>
+              
         
           <mat-label class="label">Selecione la Cartera:</mat-label>
           <mat-form-field>
             <mat-label>Cartera</mat-label>
             <mat-select formControlName="idCartera">
               <mat-option *ngFor="let c of listaCarteras" [value]="c .id">
-                {{ c .id }}
+                Cartera {{ c .id }} ({{ c.tipoMoneda === 1 ? 'Soles' : c.tipoMoneda === 2 ? 'Dólares' : '(?)' }})
               </mat-option>
             </mat-select>
             <mat-error *ngIf="obtenerControlCampo('idCartera')?.errors?.['required']">
               El campo es obligatorio.
             </mat-error>
           </mat-form-field>
-          <br/>
 
-
-          <br>
           <mat-label class="label" hidden>Seleccione el Usuario:</mat-label>
           <mat-form-field hidden>
             <mat-label>Usuario</mat-label>
@@ -49,11 +45,7 @@
               El campo Usuario es obligatorio.
             </mat-error>
           </mat-form-field>
-          <br/>
 
-
-
-          <br />
           <mat-label class="label">Seleccione la fecha de Giro</mat-label>
           <mat-form-field appearance="fill" class="example-full-width">
           <input
@@ -71,8 +63,8 @@
               *ngIf="obtenerControlCampo('fechaDeGiro')?.errors?.['required']"
                   >Obligatorio*
               </mat-error>
+              <mat-hint>mm/dd/yyyy</mat-hint>
           </mat-form-field>
-          <br>
 
             <br />
             <mat-label class="label">Seleccione la fecha de Dscto/Vcto</mat-label>
@@ -86,18 +78,20 @@
             <mat-datepicker-toggle
                 matIconSuffix
                 [for]="picker2"
+                
             ></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
                 <mat-error
                 *ngIf="obtenerControlCampo('fechaDeDscto')?.errors?.['required']"
                     >Obligatorio*
                 </mat-error>
+                <mat-hint>mm/dd/yyyy</mat-hint>
             </mat-form-field>
 
             <mat-label class="label">Valor nominal</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>Valor nominal</mat-label>
-              <input matInput placeholder="valorNominal" formControlName="valorNominal"/>
+              <input matInput placeholder="valorNominal" formControlName="valorNominal" type="number"/>
               <mat-error
                 *ngIf="obtenerControlCampo('valorNominal')?.errors?.['required']"
               >
@@ -105,8 +99,8 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-label class="label">Número de días</mat-label>
-            <mat-form-field class="example-full-width">
+            <mat-label class="label" hidden>Número de días</mat-label>
+            <mat-form-field class="example-full-width" hidden>
                 <mat-label>Número de días</mat-label>
                 <input matInput placeholder="nDias" formControlName="nDias" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('nDias')?.errors?.['required']">
@@ -114,8 +108,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Tasa Efectiva Periódica (TEP) (%)</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>Tasa Efectiva Periódica (TEP) (%)</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>Tasa Efectiva Periódica (TEP) (%)</mat-label>
                 <input matInput placeholder="TEP" formControlName="tep" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('tep')?.errors?.['required']">
@@ -123,8 +117,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">d(%)</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>d(%)</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>D (%)</mat-label>
                 <input matInput placeholder="D" formControlName="d" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('d')?.errors?.['required']">
@@ -132,8 +126,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Descuento</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>Descuento</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>Descuento</mat-label>
                 <input matInput placeholder="Descuento" formControlName="descuento" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('descuento')?.errors?.['required']">
@@ -141,8 +135,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Costes Iniciales</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>Costes Iniciales</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>Costes Iniciales</mat-label>
                 <input matInput placeholder="Costes Iniciales" formControlName="costesIniciales" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('costesIniciales')?.errors?.['required']">
@@ -150,8 +144,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Costes Finales</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>Costes Finales</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>Costes Finales</mat-label>
                 <input matInput placeholder="Costes Finales" formControlName="costesFinales" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('costesFinales')?.errors?.['required']">
@@ -159,14 +153,11 @@
                 </mat-error>
               </mat-form-field>
               
-
-           <br>
           </div>
 
           <div class="columna">
-            <br>
-            <mat-label class="label">Seguro</mat-label>
-            <mat-form-field class="example-full-width">
+            <mat-label class="label" hidden>Seguro</mat-label>
+            <mat-form-field class="example-full-width" hidden>
                 <mat-label>Seguro</mat-label>
                 <input matInput placeholder="Seguro" formControlName="seguro" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('seguro')?.errors?.['required']">
@@ -174,8 +165,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Retención</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>Retención</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>Retención</mat-label>
                 <input matInput placeholder="Retención" formControlName="retencion" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('retencion')?.errors?.['required']">
@@ -183,8 +174,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Valor Neto</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>Valor Neto</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>Valor Neto</mat-label>
                 <input matInput placeholder="Valor Neto" formControlName="valorNeto" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('valorNeto')?.errors?.['required']">
@@ -192,8 +183,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Valor a Recibir</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>Valor a Recibir</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>Valor a Recibir</mat-label>
                 <input matInput placeholder="Valor a Recibir" formControlName="valorARecibir" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('valorARecibir')?.errors?.['required']">
@@ -201,8 +192,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">Flujo</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>Flujo</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>Flujo</mat-label>
                 <input matInput placeholder="Flujo" formControlName="flujo" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('flujo')?.errors?.['required']">
@@ -210,8 +201,8 @@
                 </mat-error>
               </mat-form-field>
               
-              <mat-label class="label">TCEA (%)</mat-label>
-              <mat-form-field class="example-full-width">
+              <mat-label class="label" hidden>TCEA (%)</mat-label>
+              <mat-form-field class="example-full-width" hidden>
                 <mat-label>TCEA</mat-label>
                 <input matInput placeholder="TCEA" formControlName="tcea" type="number" />
                 <mat-error *ngIf="obtenerControlCampo('tcea')?.errors?.['required']">
@@ -240,12 +231,10 @@
         <div class="button-container">
           <button mat-button class="boton-agregar"><mat-icon>person_pin</mat-icon> Registrar </button>
           <button mat-button class="boton-cancelar" routerLink="/components/letras/listar"> <mat-icon>close</mat-icon>Cancelar</button>
-          <br>
         </div>
         <br>
         <p>{{ mensaje }}</p>
         <p>{{ mensaje2 }}</p>
-        <br>
       </form>
     </div>
   </body>

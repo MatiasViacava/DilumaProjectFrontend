@@ -18,10 +18,10 @@
 
         <div class="contenedor-principal">
 
+    
+
           <div class="columna">
-          <br>
-          
-          <br />
+
           <mat-label class="label">Seleccione la fecha de Descuento</mat-label>
           <mat-form-field appearance="fill" class="example-full-width">
           <input
@@ -40,8 +40,7 @@
                   >Obligatorio*
               </mat-error>
           </mat-form-field>
-          <br>
-
+          
           <mat-label class="label">Dias por Año</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>Dias por Año</mat-label>
@@ -55,6 +54,15 @@
 
 
                 
+
+
+           
+              
+
+          
+          </div>
+
+          <div class="columna">
             <mat-label class="label">Comisión de Activación</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>Comisión de Activación</mat-label>
@@ -64,21 +72,21 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-label class="label">Comisión de Activación Tipo</mat-label>
+            <mat-label class="label" hidden>Comisión de Activación Tipo</mat-label>
             <mat-form-field class="example-full-width">
-                <mat-label>Comisión de Activación Tipo</mat-label>
-                <mat-select formControlName="comisionActivacionTipo">
-                  <mat-option *ngFor="let t of tipos" [value]="t.value">
-                    {{ t.viewValue }}
-                  </mat-option>
-                </mat-select>
-                <mat-error
-                  *ngIf="obtenerControlCampo('comisionActivacionTipo')?.errors?.['required']"
-                  >Complete el campo
-                </mat-error>
-            </mat-form-field>
-            
-            <mat-label class="label">Fotocopias</mat-label>
+              <mat-label>Comisión de Activación (Tipo)</mat-label>
+              <mat-select formControlName="comisionActivacionTipo">
+                <mat-option *ngFor="let t of tipos" [value]="t.value">
+                  {{ t.viewValue }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="obtenerControlCampo('comisionActivacionTipo')?.errors?.['required']"
+                >Complete el campo
+              </mat-error>
+          </mat-form-field>
+
+            <mat-label class="label" >Fotocopias</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>Fotocopias</mat-label>
               <input matInput placeholder="fotocopias" formControlName="fotocopias" type="number"/>
@@ -87,9 +95,9 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-label class="label">Fotocopias Tipo</mat-label>
+            <mat-label class="label" hidden>Fotocopias Tipo</mat-label>
             <mat-form-field class="example-full-width">
-                <mat-label>Fotocopias Tipo</mat-label>
+                <mat-label>Fotocopias (Tipo)</mat-label>
                 <mat-select formControlName="fotocopiasTipo">
                   <mat-option *ngFor="let t of tipos" [value]="t.value">
                     {{ t.viewValue }}
@@ -111,9 +119,9 @@
               </mat-error>
             </mat-form-field>
             
-            <mat-label class="label">Estudio de Títulos Tipo</mat-label>
+            <mat-label class="label" hidden>Estudio de Títulos Tipo</mat-label>
             <mat-form-field class="example-full-width">
-                <mat-label>Estudio de Títulos Tipo</mat-label>
+                <mat-label>Estudio de Títulos (Tipo)</mat-label>
                 <mat-select formControlName="estudioDeTitulosTipo">
                   <mat-option *ngFor="let t of tipos" [value]="t.value">
                     {{ t.viewValue }}
@@ -134,9 +142,9 @@
               </mat-error>
             </mat-form-field>
             
-            <mat-label class="label">Gastos Administrativos Tipo</mat-label>
+            <mat-label class="label" hidden>Gastos Administrativos Tipo</mat-label>
             <mat-form-field class="example-full-width">
-                <mat-label>Gastos Administrativos Tipo</mat-label>
+                <mat-label>Gastos Administrativos (Tipo)</mat-label>
                 <mat-select formControlName="gastosAdministrativosTipo">
                   <mat-option *ngFor="let t of tipos" [value]="t.value">
                     {{ t.viewValue }}
@@ -159,9 +167,9 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-label class="label">Portes Tipo</mat-label>
+            <mat-label class="label" hidden>Portes Tipo</mat-label>
             <mat-form-field class="example-full-width">
-                <mat-label>Portes Tipo</mat-label>
+                <mat-label>Portes (Tipo)</mat-label>
                 <mat-select formControlName="portesTipo">
                   <mat-option *ngFor="let t of tipos" [value]="t.value">
                     {{ t.viewValue }}
@@ -172,7 +180,9 @@
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
+          </div>
 
+          <div class="columna">
             <mat-label class="label">Seguro</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>Seguro</mat-label>
@@ -183,9 +193,9 @@
             </mat-form-field>
             
 
-            <mat-label class="label">Seguro Tipo</mat-label>
-            <mat-form-field class="example-full-width">
-                <mat-label>Seguro Tipo</mat-label>
+            <mat-label class="label" hidden>Seguro Tipo</mat-label>
+            <mat-form-field class="example-full-width" hidden>
+                <mat-label>Seguro (Tipo)</mat-label>
                 <mat-select formControlName="seguroTipo">
                   <mat-option *ngFor="let t of tipos" [value]="t.value">
                     {{ t.viewValue }}
@@ -206,9 +216,9 @@
               </mat-error>
             </mat-form-field>
             
-            <mat-label class="label">Retención Tipo</mat-label>
-            <mat-form-field class="example-full-width">
-                <mat-label>Retención Tipo</mat-label>
+            <mat-label class="label" hidden>Retención Tipo</mat-label>
+            <mat-form-field class="example-full-width" hidden>
+                <mat-label>Retención (Tipo)</mat-label>
                 <mat-select formControlName="retencionTipo">
                   <mat-option *ngFor="let t of tipos" [value]="t.value">
                     {{ t.viewValue }}
@@ -219,13 +229,11 @@
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
-              
-
-           <br>
           </div>
 
+
           <div class="columna">
-            <br>
+            
 
             
             <mat-label class="label">TEA Compensatoria</mat-label>
@@ -237,8 +245,8 @@
               </mat-error>
             </mat-form-field>
             
-            <mat-label class="label">Número de Instrumentos</mat-label>
-            <mat-form-field class="example-full-width">
+            <mat-label class="label" hidden>Número de Instrumentos</mat-label>
+            <mat-form-field class="example-full-width" hidden>
               <mat-label>Número de Instrumentos</mat-label>
               <input matInput placeholder="nDeInstr" formControlName="nDeInstr" type="number"/>
               <mat-error *ngIf="obtenerControlCampo('nDeInstr')?.errors?.['required']">
@@ -246,8 +254,8 @@
               </mat-error>
             </mat-form-field>
             
-            <mat-label class="label">Total a Recibir</mat-label>
-            <mat-form-field class="example-full-width">
+            <mat-label class="label" hidden>Total a Recibir</mat-label>
+            <mat-form-field class="example-full-width" hidden>
               <mat-label>Total a Recibir</mat-label>
               <input matInput placeholder="totalARecibir" formControlName="totalARecibir" type="number"/>
               <mat-error *ngIf="obtenerControlCampo('totalARecibir')?.errors?.['required']">
@@ -255,8 +263,8 @@
               </mat-error>
             </mat-form-field>
             
-            <mat-label class="label">TCEA Cartera</mat-label>
-            <mat-form-field class="example-full-width">
+            <mat-label class="label" hidden>TCEA Cartera</mat-label>
+            <mat-form-field class="example-full-width" hidden>
               <mat-label>TCEA Cartera</mat-label>
               <input matInput placeholder="tceaCartera" formControlName="tceaCartera" type="number"/>
               <mat-error *ngIf="obtenerControlCampo('tceaCartera')?.errors?.['required']">

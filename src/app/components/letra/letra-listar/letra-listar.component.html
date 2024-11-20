@@ -12,9 +12,8 @@
     <h2>{{"LISTA DE LETRAS" }}</h2> 
   </div>
 
-  <div class="container">
-
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div class="container" style="overflow-x: auto;">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="min-width: 1200px;">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef > ID </th>
@@ -23,7 +22,7 @@
           
           <ng-container matColumnDef="idCartera">
             <th mat-header-cell *matHeaderCellDef > ID Cartera </th>
-            <td mat-cell *matCellDef="let element" > {{element.idCartera.id}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.idCartera.id}} ({{ element.idCartera.tipoMoneda === 1 ? 'Soles' : element.idCartera.tipoMoneda === 2 ? 'Dólares' : '(?)' }}) </td>
           </ng-container>
           
           <ng-container matColumnDef="idUsuario">
@@ -33,17 +32,30 @@
           
           <ng-container matColumnDef="fechaDeGiro">
             <th mat-header-cell *matHeaderCellDef > Fecha de Giro </th>
-            <td mat-cell *matCellDef="let element" > {{element.fechaDeGiro | date}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.fechaDeGiro | date: 'dd/MM/yyyy'}} </td>
           </ng-container>
           
           <ng-container matColumnDef="valorNominal">
             <th mat-header-cell *matHeaderCellDef > Valor Nominal </th>
-            <td mat-cell *matCellDef="let element" > {{element.valorNominal}} </td>
+            <td mat-cell *matCellDef="let element">
+              {{ element.idCartera.tipoMoneda === 1 ? 'S/.' : element.idCartera.tipoMoneda === 2 ? '$' : '(?)' }} 
+              {{
+                (element.idCartera.tipoMoneda === element.tipoMoneda) ? (element.valorNominal * 1).toFixed(2) : 
+                (element.idCartera.tipoMoneda === 1 && element.tipoMoneda === 2) ? (element.valorNominal * 3.78).toFixed(2) : 
+                (element.idCartera.tipoMoneda === 2 && element.tipoMoneda === 1) ? (element.valorNominal / 3.78).toFixed(2) : 
+                (element.valorNominal).toFixed(2)
+              }}
+              {{
+                (element.idCartera.tipoMoneda !== element.tipoMoneda && element.idCartera.tipoMoneda === 1) ? '($ ' + (element.valorNominal * 1).toFixed(2) + ')': 
+                (element.idCartera.tipoMoneda !== element.tipoMoneda && element.idCartera.tipoMoneda === 2) ? '(S/. ' + (element.valorNominal * 1).toFixed(2) + ')':
+                ''
+              }}
+            </td>
           </ng-container>
           
           <ng-container matColumnDef="fechaDeDscto">
             <th mat-header-cell *matHeaderCellDef > Fecha de Descuento </th>
-            <td mat-cell *matCellDef="let element" > {{element.fechaDeDscto | date}} </td>
+            <td mat-cell *matCellDef="let element" > {{element.fechaDeDscto | date: 'dd/MM/yyyy'}} </td>
           </ng-container>
           
           <ng-container matColumnDef="nDias">
@@ -53,12 +65,12 @@
           
           <ng-container matColumnDef="tep">
             <th mat-header-cell *matHeaderCellDef > TEP (%)</th>
-            <td mat-cell *matCellDef="let element" > {{element.tep.toFixed(3)}}% </td>
+            <td mat-cell *matCellDef="let element" > {{(element.tep * 100.00).toFixed(3)}}% </td>
           </ng-container>
           
           <ng-container matColumnDef="d">
             <th mat-header-cell *matHeaderCellDef > D (%)</th>
-            <td mat-cell *matCellDef="let element" > {{element.d.toFixed(3)}}% </td>
+            <td mat-cell *matCellDef="let element" > {{(element.d * 100.00).toFixed(3)}}% </td>
           </ng-container>
           
           <ng-container matColumnDef="descuento">
@@ -103,7 +115,7 @@
           
           <ng-container matColumnDef="tcea">
             <th mat-header-cell *matHeaderCellDef > TCEA (%)</th>
-            <td mat-cell *matCellDef="let element" > {{element.tcea.toFixed(4)}}% </td>
+            <td mat-cell *matCellDef="let element" > {{(element.tcea * 100.00).toFixed(4)}}% </td>
           </ng-container>
           
           <ng-container matColumnDef="tipoMoneda">
@@ -136,12 +148,13 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <br>
-    <mat-paginator 
-    [pageSizeOptions]="[10, 30, 50]" 
-    showFirstLastButtons aria-label="Select page">
-  </mat-paginator>
+
   
 </div>
+<br>
+<mat-paginator 
+[pageSizeOptions]="[10, 30, 50]" 
+showFirstLastButtons aria-label="Select page">
+</mat-paginator>
 </body>
 </html>

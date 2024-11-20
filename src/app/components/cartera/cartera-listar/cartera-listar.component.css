@@ -1,54 +1,66 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; /*Para que tenga color en toda la página*/
-  }
-  .center {
-    text-align: center;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 40px); /* Ten en cuenta la altura del menú */
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /*Para que tenga color en toda la página*/
+}
+.center {
+  text-align: center;
+  color: #f5c2c2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 40px); /* Ten en cuenta la altura del menú */
+}
+
+.container {
+
+  width: 100%; /* Ajusta este porcentaje según tus necesidades */
+  background-color: #fff; /*COLOR DE LA TABLA*/
+  border: 10px solid #f0a86c; /*Color del borde de la TABLA*/
+  padding: 0px;
+}
+
+
+.custom-table {
+  width: 100%;
+  display: flex; /* Habilita el diseño Flexbox para las filas */
+  flex-direction: column; /* Las filas se ajustarán verticalmente */
+ }
+
+th {
+  background-color: #cf1010;
+  color: rgb(75, 72, 72);
+  text-align: center; /*TITULO de las columnas*/
   
-  .container {
-    width: 60%; /* Ajusta este porcentaje según tus necesidades */
-    background-color: #fff; /*COLOR DE LA TABLA*/
-    border: 30px solid #F0C481; /*Color del borde de la TABLA*/
-    padding: 30px;
-  }
-  
-  
-  .custom-table {
-    width: 100%;
-    display: flex; /* Habilita el diseño Flexbox para las filas */
-    flex-direction: column; /* Las filas se ajustarán verticalmente */
-   }
-  
-  th {
-    background-color: #cf1010;
-    color: rgb(75, 72, 72);
-    text-align: center; /*TITULO de las columnas*/
-    
-  }
-  
-  td {
-    background-color: #f2f2f2; /*Contenido de la tabla*/
-    color: #333;
-    text-align: center; /*Contenido de la tabla*/
-  }
-  
-  /* Botón azul para actualizar */
-  .boton-actualizar {
-  background-color: #6eb8db;
-  color: white; /* Color del texto */
-  }
-  
-  /* Botón amarillo para modificar */
-  .boton-eliminar {
-  background-color: #8BC34A; /* Color amarillo */
-  color: white; /* Color del texto */
-  }
+}
+
+td {
+  background-color: #f2f2f2; /*Contenido de la tabla*/
+  color: #333;
+  text-align: center; /*Contenido de la tabla*/
+}
+
+/* Botón azul para actualizar */
+.boton-actualizar {
+background-color: #6eb8db;
+color: white; /* Color del texto */
+}
+
+/* Botón amarillo para modificar */
+.boton-eliminar {
+background-color: #8BC34A; /* Color amarillo */
+color: white; /* Color del texto */
+}
+
+table {
+  width: 100%;
+  min-width: 1000px; /* Cambia según el tamaño deseado */
+}
+
+th, td {
+  white-space: nowrap; /* Evita que el contenido se corte */
+  text-align: center;    /* Alinea todo a la izquierda */
+  font-size: 100%
+}

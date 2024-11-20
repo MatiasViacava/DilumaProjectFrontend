@@ -35,6 +35,12 @@ export class MenuComponent implements OnInit{
     this.router.navigate(['components/',comp1,comp2]);
   }
 
+  redirigirYRecargar(ruta: string): void {
+    this.router.navigate([ruta]).then(() => {
+      window.location.reload();
+    });
+  }
+
   verificar() {
     return this.loginService.verificar();
   }

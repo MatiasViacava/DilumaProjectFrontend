@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import * as moment from 'moment';
@@ -10,7 +10,6 @@ import { UsuariosService } from 'src/app/services/usuario.service';
 import { ValidationErrors, ValidatorFn } from '@angular/forms';
 import { CarteraService } from 'src/app/services/cartera.service';
 import { LoginService } from 'src/app/services/login.service';
-
 
 @Component({
   selector: 'app-letra-creaedita',
@@ -83,7 +82,7 @@ export class LetraCreaeditaComponent {
         valorARecibir: [0.0, [Validators.required, Validators.min(0)]], 
         flujo: [0.0, [Validators.required, Validators.min(0)]],
         tcea: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
-        tipoMoneda: [0, [Validators.required, Validators.min(0)]],
+        tipoMoneda: [1, [Validators.required, Validators.min(0)]],
       });
 
       this.uS.list().subscribe(data => { this.listaUsuarios = data });
@@ -94,7 +93,7 @@ export class LetraCreaeditaComponent {
       this.id = data['id']; //xd
       this.edicion = data['id'] != null;
       if (this.edicion) {
-        this.titulo="Editar letra"
+        this.titulo="Editar letra " + this.id
       }
       this.init();
     });
@@ -171,7 +170,8 @@ export class LetraCreaeditaComponent {
                     })
                   })
                 }
-                this.router.navigate(['/components/letras/listar']);
+                this.redirigirYRecargar('/components/letras/listar');
+
               }
         
             } else {
@@ -183,6 +183,12 @@ export class LetraCreaeditaComponent {
       })
 
       
+  }
+
+  redirigirYRecargar(ruta: string): void {
+    this.router.navigate([ruta]).then(() => {
+      window.location.reload();
+    });
   }
 
   obtenerMensajesDeError(): string {
