@@ -6,12 +6,21 @@
     font-family: Lustria;
     src: url('../fonts/Lustria-Regular.ttf');
 }
+@media (max-width: 590px) {
+    .btn-content button {
+        width: 100px; /* Tamaño más pequeño */
+        font-size: 0.9rem; /* Reducir tamaño de fuente */
+    }
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'SofiaPro', serif;
     overflow-x: hidden;
+}
+h1, h2, h3 {
+    line-height: 1.2; /* Ajusta según sea necesario */
 }
 body{
     background-color:white;
@@ -121,17 +130,19 @@ h1{
     justify-content: left;
     border-left: 2px solid black   ;
 }
-.btn-content button{
-    width: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    border-radius: 2rem;
-    background-color: white;
+.btn-content button {
+    appearance: none; /* Eliminar estilo nativo */
+    -webkit-appearance: none; /* Compatibilidad con navegadores WebKit */
+    -moz-appearance: none; /* Compatibilidad con navegadores Mozilla */
+    background-color: white; /* Mantener diseño limpio */
+    border: 1px solid black; /* Ajustar bordes según diseño */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 10px 20px; /* Ajustar espacio interno */
     font-size: 1rem;
-    font-weight: bolder;
+    font-weight: bold;
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra opcional */
+    text-align: center;
 }
 .iconmenu{
     display: none !important;
