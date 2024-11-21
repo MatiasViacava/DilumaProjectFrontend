@@ -84,7 +84,7 @@ export class CarteraCreaeditaComponent {
       totalARecibir: [0.0, [Validators.required, Validators.min(0)]],
       tceaCartera: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
       tipoMoneda: [1, [Validators.required, Validators.min(0)]],
-      cambio: [0.0, [Validators.required, Validators.min(0.01)]]
+      cambio: [0.0, [Validators.required, Validators.min(1)]]
     });
 
     this.route.params.subscribe((data: Params) => {
@@ -147,10 +147,10 @@ export class CarteraCreaeditaComponent {
             })
           })
         }
-        this.router.navigate(['/components/carteras/listar']);
+        this.redirigirYRecargar('/components/carteras/listar');
 
     } else {
-      this.redirigirYRecargar('/components/carteras/listar');
+      this.mensaje=this.obtenerMensajesDeError();
     }
   }
 

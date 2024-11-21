@@ -32,7 +32,7 @@
       </mat-list-item>
 
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuCarteras" *ngIf="role == 'ADMIN'"><mat-icon>assignment</mat-icon>{{"Carteras" }}</button>
+        <button mat-button [matMenuTriggerFor]="menuCarteras" *ngIf="role == 'CLIENTE' || 'ADMIN'"><mat-icon>assignment</mat-icon>{{"Carteras" }}</button>
       </mat-list-item>
 
       <mat-list-item>
@@ -53,17 +53,17 @@
   </mat-drawer-content>
   <mat-menu #menuUsuarios="matMenu">
     <button mat-menu-item (click)="iralink('usuarios','nuevo')" *ngIf="role == 'ADMIN'"><mat-icon>dns</mat-icon> {{"Registrar" }}</button>
-    <button mat-menu-item (click)="iralink('usuarios','listar')"><mat-icon>dns</mat-icon>{{AltBoton }}</button>
+    <button mat-menu-item (click)="iralink('usuarios','listar')"><mat-icon>dns</mat-icon>{{AltBotonUsuario }}</button>
   </mat-menu>
 
   <mat-menu #menuLetras="matMenu">
     <button mat-menu-item (click)="iralink('letras','nuevo')"><mat-icon>dns</mat-icon>{{"Registrar" }}</button>
-    <button mat-menu-item (click)="redirigirYRecargar('/components/letras/listar')"><mat-icon>dns</mat-icon>{{"Listar" }}</button>
+    <button mat-menu-item (click)="redirigirYRecargar('/components/letras/listar')" ><mat-icon>dns</mat-icon>{{"Listar" }}</button>
   </mat-menu>
   
   <mat-menu #menuCarteras="matMenu">
     <button mat-menu-item (click)="iralink('carteras','nuevo')" *ngIf="role == 'ADMIN'"><mat-icon>dns</mat-icon>{{"Registrar" }}</button>
-    <button mat-menu-item (click)="redirigirYRecargar('/components/carteras/listar')"><mat-icon>dns</mat-icon>{{AltBoton }}</button>
+    <button mat-menu-item (click)="redirigirYRecargar('/components/carteras/listar')"><mat-icon>dns</mat-icon>Listar </button>
   </mat-menu>
   
   <mat-menu #menuTipoActividad="matMenu">

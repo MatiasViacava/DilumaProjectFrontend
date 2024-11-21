@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Letra } from 'src/app/models/Letra';
 import { CarteraService } from 'src/app/services/cartera.service';
 import { LetraService } from 'src/app/services/letra.service';
+import { UsuariosService } from 'src/app/services/usuario.service';
+import { LoginService } from 'src/app/services/login.service';
+
 
 function calculateTIRNoPer(cashFlows: number[], dates: (Date | string)[], diasXAnio: number): number {
   // Convertir cualquier string a Date
@@ -66,6 +69,9 @@ export class LetraListarComponent {
   sumaValorRCartera:number=0;
   tempDate: Date=new Date();
 
+  role:string="";
+  username: string="";
+
   
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -73,9 +79,14 @@ export class LetraListarComponent {
     public route: ActivatedRoute, 
     private cS: CarteraService,
     private router: Router, 
-    private lS: LetraService) {}
+    private lS: LetraService,
+    private uS:UsuariosService,
+    private loginService:LoginService) {}
 
   ngOnInit(): void {
+    this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
+
     this.lS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
