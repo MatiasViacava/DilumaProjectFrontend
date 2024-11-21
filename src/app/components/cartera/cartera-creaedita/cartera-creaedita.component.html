@@ -36,7 +36,7 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
               <mat-error
-              *ngIf="obtenerControlCampo('fechaDescuento')?.errors?.['required']"
+              *ngIf="form.get('fechaDescuento')?.errors?.['required']"
                   >Obligatorio*
               </mat-error>
           </mat-form-field>
@@ -46,7 +46,7 @@
               <mat-label>Dias por Año</mat-label>
               <input matInput placeholder="diasXAnio" formControlName="diasXAnio"/>
               <mat-error
-                *ngIf="obtenerControlCampo('diasXAnio')?.errors?.['required']"
+                *ngIf="form.get('diasXAnio')?.errors?.['required']"
               >
                 Complete el campo
               </mat-error>
@@ -67,7 +67,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Comisión de Activación</mat-label>
               <input matInput placeholder="comisionActivacion" formControlName="comisionActivacion" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('comisionActivacion')?.errors?.['required']">
+              <mat-error *ngIf="form.get('comisionActivacion')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -81,7 +81,7 @@
                 </mat-option>
               </mat-select>
               <mat-error
-                *ngIf="obtenerControlCampo('comisionActivacionTipo')?.errors?.['required']"
+                *ngIf="form.get('comisionActivacionTipo')?.errors?.['required']"
                 >Complete el campo
               </mat-error>
           </mat-form-field>
@@ -90,7 +90,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Fotocopias</mat-label>
               <input matInput placeholder="fotocopias" formControlName="fotocopias" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('fotocopias')?.errors?.['required']">
+              <mat-error *ngIf="form.get('fotocopias')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -104,7 +104,7 @@
                   </mat-option>
                 </mat-select>
                 <mat-error
-                  *ngIf="obtenerControlCampo('fotocopiasTipo')?.errors?.['required']"
+                  *ngIf="form.get('fotocopiasTipo')?.errors?.['required']"
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
@@ -114,7 +114,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Estudio de Títulos</mat-label>
               <input matInput placeholder="estudioDeTitulos" formControlName="estudioDeTitulos" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('estudioDeTitulos')?.errors?.['required']">
+              <mat-error *ngIf="form.get('estudioDeTitulos')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -128,7 +128,7 @@
                   </mat-option>
                 </mat-select>
                 <mat-error
-                  *ngIf="obtenerControlCampo('estudioDeTitulosTipo')?.errors?.['required']"
+                  *ngIf="form.get('estudioDeTitulosTipo')?.errors?.['required']"
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
@@ -137,7 +137,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Gastos Administrativos</mat-label>
               <input matInput placeholder="gastosAdministrativos" formControlName="gastosAdministrativos" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('gastosAdministrativos')?.errors?.['required']">
+              <mat-error *ngIf="form.get('gastosAdministrativos')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -151,7 +151,7 @@
                   </mat-option>
                 </mat-select>
                 <mat-error
-                  *ngIf="obtenerControlCampo('gastosAdministrativosTipo')?.errors?.['required']"
+                  *ngIf="form.get('gastosAdministrativosTipo')?.errors?.['required']"
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
@@ -162,7 +162,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Portes</mat-label>
               <input matInput placeholder="portes" formControlName="portes" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('portes')?.errors?.['required']">
+              <mat-error *ngIf="form.get('portes')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -176,7 +176,7 @@
                   </mat-option>
                 </mat-select>
                 <mat-error
-                  *ngIf="obtenerControlCampo('portesTipo')?.errors?.['required']"
+                  *ngIf="form.get('portesTipo')?.errors?.['required']"
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
@@ -187,7 +187,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Seguro</mat-label>
               <input matInput placeholder="seguro" formControlName="seguro" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('seguro')?.errors?.['required']">
+              <mat-error *ngIf="form.get('seguro')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -202,7 +202,7 @@
                   </mat-option>
                 </mat-select>
                 <mat-error
-                  *ngIf="obtenerControlCampo('seguroTipo')?.errors?.['required']"
+                  *ngIf="form.get('seguroTipo')?.errors?.['required']"
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
@@ -211,7 +211,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Retención</mat-label>
               <input matInput placeholder="retencion" formControlName="retencion" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('retencion')?.errors?.['required']">
+              <mat-error *ngIf="form.get('retencion')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -225,7 +225,7 @@
                   </mat-option>
                 </mat-select>
                 <mat-error
-                  *ngIf="obtenerControlCampo('retencionTipo')?.errors?.['required']"
+                  *ngIf="form.get('retencionTipo')?.errors?.['required']"
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
@@ -240,7 +240,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>TEA Compensatoria</mat-label>
               <input matInput placeholder="teaCompensatoria" formControlName="teaCompensatoria" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('teaCompensatoria')?.errors?.['required']">
+              <mat-error *ngIf="form.get('teaCompensatoria')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -249,7 +249,7 @@
             <mat-form-field class="example-full-width" hidden>
               <mat-label>Número de Instrumentos</mat-label>
               <input matInput placeholder="nDeInstr" formControlName="nDeInstr" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('nDeInstr')?.errors?.['required']">
+              <mat-error *ngIf="form.get('nDeInstr')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -258,7 +258,7 @@
             <mat-form-field class="example-full-width" hidden>
               <mat-label>Total a Recibir</mat-label>
               <input matInput placeholder="totalARecibir" formControlName="totalARecibir" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('totalARecibir')?.errors?.['required']">
+              <mat-error *ngIf="form.get('totalARecibir')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -267,7 +267,7 @@
             <mat-form-field class="example-full-width" hidden>
               <mat-label>TCEA Cartera</mat-label>
               <input matInput placeholder="tceaCartera" formControlName="tceaCartera" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('tceaCartera')?.errors?.['required']">
+              <mat-error *ngIf="form.get('tceaCartera')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>
@@ -281,16 +281,16 @@
                   </mat-option>
                 </mat-select>
                 <mat-error
-                  *ngIf="obtenerControlCampo('tipoMoneda')?.errors?.['required']"
+                  *ngIf="form.get('tipoMoneda')?.errors?.['required']"
                   >Complete el campo
                 </mat-error>
             </mat-form-field>
 
-            <mat-label class="label">Cambio</mat-label>
+            <mat-label class="label">Cambio (S/. - $)</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>Cambio</mat-label>
               <input matInput placeholder="cambio" formControlName="cambio" type="number"/>
-              <mat-error *ngIf="obtenerControlCampo('cambio')?.errors?.['required']" type="number">
+              <mat-error *ngIf="form.get('cambio')?.errors?.['required']">
                 Complete el campo
               </mat-error>
             </mat-form-field>

@@ -7,23 +7,22 @@
   </head>
   <body>
     <div class="container">
-      <div class="login">
-          <h1>INICIAR SESION</h1>
-          <hr />
-          <p>DiLuMa</p>
-          <label for="">Usuario</label>
-          <div class="inputuser">
-            <input placeholder="Username" [(ngModel)]="username" />
-          </div>
-          <label for="">Contraseña</label>
-          <div class="inputuser">
-            <input type="password" placeholder="Password" [(ngModel)]="password" />
-          </div>
-
-          <button (click)="login()">Ingresar</button>
-          <button class="boton-regresar" routerLink="/landingpage">Regresar</button>
-      </div>
-     
+        <div class="login">
+            <h1>INICIAR SESIÓN</h1>
+            <img width="200" height="200" src="https://media.discordapp.net/attachments/972255819464847431/1309025619312513054/logodiluma.jpg?ex=6740149c&is=673ec31c&hm=c978eaa07d1a0b6f04e3bc4f9ceeb47977ac2eede705f046a77631d143214198&=&format=webp&width=537&height=565" alt="Logo">
+            <hr />
+            <p>DiLuMa</p>
+            <label for="username">Usuario</label>
+            <div class="inputuser">
+                <input id="username" type="text" placeholder="Username" [(ngModel)]="username" />
+            </div>
+            <label for="password">Contraseña</label>
+            <div class="inputuser">
+                <input id="password" type="password" placeholder="Password" [(ngModel)]="password" />
+            </div>
+            <button (click)="login()">Ingresar</button>
+            <button class="boton-regresar" routerLink="/landingpage">Regresar</button>
+        </div>
     </div>
-  </body>
+</body>
 </html>

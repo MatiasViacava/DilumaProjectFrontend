@@ -7,6 +7,7 @@ import { Usuarios } from 'src/app/models/Usuarios';
 import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
 import { UsuariosService } from 'src/app/services/usuario.service';
 import { LoginService } from 'src/app/services/login.service';
+
 var bcrypt = require('bcryptjs');
 
 @Component({

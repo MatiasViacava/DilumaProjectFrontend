@@ -23,7 +23,7 @@ export class MenuComponent implements OnInit{
   idiomaActivo: any;
 
   UsuarioAltTitulo:string="Usuarios"
-  AltBoton:string="Listar"
+  AltBotonUsuario:string="Listar"
 
 
   cerrar() {
@@ -63,7 +63,7 @@ export class MenuComponent implements OnInit{
   
 
     if (this.role=='CLIENTE') {
-      this.AltBoton="Editar";
+      this.AltBotonUsuario="Editar";
       this.UsuarioAltTitulo="Perfil";}
     };
 }

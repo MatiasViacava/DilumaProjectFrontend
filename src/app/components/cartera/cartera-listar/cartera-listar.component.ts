@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Cartera } from 'src/app/models/Cartera';
 import { CarteraService } from 'src/app/services/cartera.service';
 import { LetraService } from 'src/app/services/letra.service';
+import { LoginService } from 'src/app/services/login.service';
 
 function calculateTIRNoPer(cashFlows: number[], dates: (Date | string)[], diasXAnio: number): number {
   // Convertir cualquier string a Date
@@ -58,6 +59,8 @@ export class CarteraListarComponent {
   displayedColumns: string[] =
   ['actualizar','id','tipoMoneda','cambio', 'fechaDescuento', 'diasXAnio', 'comisionActivacion', 'comisionActivacionTipo', 'fotocopias', 'fotocopiasTipo', 'estudioDeTitulos', 'estudioDeTitulosTipo', 'gastosAdministrativos', 'gastosAdministrativosTipo', 'portes', 'portesTipo', 'seguro', 'seguroTipo', 'retencion', 'retencionTipo', 'teaCompensatoria', 'nDeInstr', 'totalARecibir', 'tceaCartera','eliminar']
   
+  role:string="";
+  username: string="";
   numerotemp:number = 0;
   flujotemp:number = 0.0;
   cashFlows: number[] = [];
@@ -70,7 +73,8 @@ export class CarteraListarComponent {
     public route: ActivatedRoute, 
     private router: Router, 
     private cS: CarteraService,
-    private lS: LetraService) {}
+    private lS: LetraService,
+    private loginService: LoginService) {}
 
   ngOnInit(): void {
 
@@ -184,4 +188,6 @@ export class CarteraListarComponent {
         return `Desconocido (${tipo})`; // Opcional, para valores no definidos
     }
   }
+
+
 }
