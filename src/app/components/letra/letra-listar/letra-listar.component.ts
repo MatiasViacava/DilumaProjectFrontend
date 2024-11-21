@@ -93,7 +93,10 @@ export class LetraListarComponent {
           {
             if (c.id == l.idCartera.id)
             {
-
+              if (l.tipoMoneda == l.idCartera.tipoMoneda) {l.valorNominal=l.valorNominal}
+              else if (l.idCartera.tipoMoneda==2 && l.tipoMoneda==1) {l.valorNominal=l.valorNominal/3.78}
+              else if (l.idCartera.tipoMoneda==1 && l.tipoMoneda == 2) {l.valorNominal=l.valorNominal*3.78}
+              
               const fechadescuentocartera = new Date(c.fechaDescuento);
               const fechadescuentoletra = new Date(l.fechaDeDscto);
               const diferenciaEnMilisegundos = fechadescuentoletra.getTime() - fechadescuentocartera.getTime();

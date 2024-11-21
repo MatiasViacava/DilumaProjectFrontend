@@ -147,7 +147,7 @@ export class CarteraCreaeditaComponent {
         this.router.navigate(['/components/carteras/listar']);
 
     } else {
-      this.mensaje = this.obtenerMensajesDeError();
+      this.redirigirYRecargar('/components/carteras/listar');
     }
   }
 
@@ -179,6 +179,20 @@ export class CarteraCreaeditaComponent {
       throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
     }
     return control;
+  }
+
+  redirigirYRecargar(ruta: string): void {
+    this.router.navigate([ruta]).then(() => {
+      // Primera recarga
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000); // Espera 1 segundo
+
+      // Segunda recarga
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000); // Espera 2 segundos desde el inicio
+    });
   }
 
   init() {
