@@ -21,4 +21,5 @@ export class Cartera{
     totalARecibir:number=0.0 
     tceaCartera:number=0.0 
     tipoMoneda:number = 0
+    cambio: number = 0.0
 }

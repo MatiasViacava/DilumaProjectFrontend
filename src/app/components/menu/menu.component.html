@@ -11,7 +11,7 @@
     <span>DILUMA</span>
     <button mat-icon-button><mat-icon>notifications</mat-icon></button>
     <button mat-icon-button><mat-icon>sms</mat-icon></button>
-    <label>{{role}} {{username}}, {{"con la id de usuario"}} {{id}}</label>
+    <label>Usuario: {{username}}. {{" Id de usuario:"}} {{id}}</label>
 </mat-toolbar>
 </footer>
 <body>
@@ -40,7 +40,7 @@
       </mat-list-item>
       
       <mat-list-item>
-        <button mat-button [matMenuTriggerFor]="menuReportes" *ngIf="role == 'ADMIN'"><mat-icon>markunread_mailbox</mat-icon>{{"Reportes" }}</button>
+        <button mat-button [matMenuTriggerFor]="menuReportes" *ngIf="role == 'ADMIN'" hidden><mat-icon>markunread_mailbox</mat-icon>{{"Reportes" }}</button>
       </mat-list-item>
 
     </mat-nav-list>
@@ -76,7 +76,7 @@
     <button mat-menu-item (click)="iralink('tipousuario','listar')"><mat-icon>dns</mat-icon>{{"Listar" }}</button>
   </mat-menu>
   
-  <mat-menu #menuReportes="matMenu">
+  <mat-menu #menuReportes="matMenu" hidden>
     <button mat-menu-item routerLink="/components/reportes/reportejulio"><mat-icon>dns</mat-icon>{{"Reporte 1"}}</button>
     <button mat-menu-item routerLink="/components/reportes/reportefabian"><mat-icon>dns</mat-icon>{{"Reporte 2"}}</button>
     <button mat-menu-item routerLink="/components/reportes/reportesebastian"><mat-icon>dns</mat-icon>{{"Reporte 3"}}</button>

@@ -25,7 +25,7 @@
             <mat-label>Cartera</mat-label>
             <mat-select formControlName="idCartera">
               <mat-option *ngFor="let c of listaCarteras" [value]="c .id">
-                Cartera {{ c .id }} ({{ c.tipoMoneda === 1 ? 'Soles' : c.tipoMoneda === 2 ? 'Dólares' : '(?)' }})
+                Cart. {{ c .id }} ({{ c.tipoMoneda === 1 ? 'Soles' : c.tipoMoneda === 2 ? 'Dólares' : '(?)' }}) / Cambio {{c.cambio}}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="obtenerControlCampo('idCartera')?.errors?.['required']">

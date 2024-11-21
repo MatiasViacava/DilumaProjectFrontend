@@ -22,7 +22,8 @@
           
           <ng-container matColumnDef="idCartera">
             <th mat-header-cell *matHeaderCellDef > ID Cartera </th>
-            <td mat-cell *matCellDef="let element" > {{element.idCartera.id}} ({{ element.idCartera.tipoMoneda === 1 ? 'Soles' : element.idCartera.tipoMoneda === 2 ? 'Dólares' : '(?)' }}) </td>
+            <td mat-cell *matCellDef="let element" > Cart. {{element.idCartera.id}} ({{ element.idCartera.tipoMoneda === 1 ? 'S/.' : element.idCartera.tipoMoneda === 2 ? '$' : '(?)' }}) - 
+             Cambio {{ element.idCartera.cambio }} </td>
           </ng-container>
           
           <ng-container matColumnDef="idUsuario">
@@ -41,8 +42,8 @@
               {{ element.idCartera.tipoMoneda === 1 ? 'S/.' : element.idCartera.tipoMoneda === 2 ? '$' : '(?)' }} 
               {{
                 (element.idCartera.tipoMoneda === element.tipoMoneda) ? (element.valorNominal * 1).toFixed(2) : 
-                (element.idCartera.tipoMoneda === 1 && element.tipoMoneda === 2) ? (element.valorNominal * 3.78).toFixed(2) : 
-                (element.idCartera.tipoMoneda === 2 && element.tipoMoneda === 1) ? (element.valorNominal / 3.78).toFixed(2) : 
+                (element.idCartera.tipoMoneda === 1 && element.tipoMoneda === 2) ? (element.valorNominal * element.idCartera.cambio).toFixed(2) : 
+                (element.idCartera.tipoMoneda === 2 && element.tipoMoneda === 1) ? (element.valorNominal / element.idCartera.cambio).toFixed(2) : 
                 (element.valorNominal).toFixed(2)
               }}
               {{

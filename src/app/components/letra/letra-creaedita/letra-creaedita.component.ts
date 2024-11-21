@@ -69,7 +69,7 @@ export class LetraCreaeditaComponent {
         idUsuario: [''], 
         fechaDeGiro: [new Date()], 
         valorNominal: [0.0, [Validators.required, Validators.min(0)]], 
-        fechaDeDscto: [manana], 
+        fechaDeDscto: [new Date()], 
         nDias: [0, [Validators.required, Validators.min(0)]],
         tep: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
         d: [0.0, [Validators.required, Validators.min(0)]],
@@ -233,6 +233,8 @@ export class LetraCreaeditaComponent {
   }
 
   init() {
+
+
     if (this.edicion) {
         this.tuS.listarId(this.id).subscribe((data2) => {
           this.form = new FormGroup({

@@ -21,7 +21,7 @@
           
           <ng-container matColumnDef="fechaDescuento"> 
             <th mat-header-cell *matHeaderCellDef> Fecha Descuento </th> 
-            <td mat-cell *matCellDef="let element"> {{element.fechaDescuento | date}} </td> 
+            <td mat-cell *matCellDef="let element"> {{element.fechaDescuento | date: 'dd/MM/yyyy'}} </td> 
           </ng-container>
           
           <ng-container matColumnDef="diasXAnio"> 
@@ -122,6 +122,11 @@
           <ng-container matColumnDef="tipoMoneda"> 
             <th mat-header-cell *matHeaderCellDef> Tipo de Moneda </th> 
             <td mat-cell *matCellDef="let element"> {{getMonedasTipoTexto(element.tipoMoneda)}} </td> 
+          </ng-container>
+
+          <ng-container matColumnDef="cambio"> 
+            <th mat-header-cell *matHeaderCellDef> Cambio </th> 
+            <td mat-cell *matCellDef="let element"> {{element.cambio}} </td> 
           </ng-container>
 
       <!-- ACCIONES -->
