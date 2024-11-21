@@ -56,7 +56,7 @@ function calculateTIRNoPer(cashFlows: number[], dates: (Date | string)[], diasXA
 export class CarteraListarComponent {
   dataSource: MatTableDataSource<Cartera> = new MatTableDataSource();
   displayedColumns: string[] =
-  ['actualizar','id','tipoMoneda', 'fechaDescuento', 'diasXAnio', 'comisionActivacion', 'comisionActivacionTipo', 'fotocopias', 'fotocopiasTipo', 'estudioDeTitulos', 'estudioDeTitulosTipo', 'gastosAdministrativos', 'gastosAdministrativosTipo', 'portes', 'portesTipo', 'seguro', 'seguroTipo', 'retencion', 'retencionTipo', 'teaCompensatoria', 'nDeInstr', 'totalARecibir', 'tceaCartera','eliminar']
+  ['actualizar','id','tipoMoneda','cambio', 'fechaDescuento', 'diasXAnio', 'comisionActivacion', 'comisionActivacionTipo', 'fotocopias', 'fotocopiasTipo', 'estudioDeTitulos', 'estudioDeTitulosTipo', 'gastosAdministrativos', 'gastosAdministrativosTipo', 'portes', 'portesTipo', 'seguro', 'seguroTipo', 'retencion', 'retencionTipo', 'teaCompensatoria', 'nDeInstr', 'totalARecibir', 'tceaCartera','eliminar']
   
   numerotemp:number = 0;
   flujotemp:number = 0.0;
@@ -131,6 +131,7 @@ export class CarteraListarComponent {
           c.totalARecibir=c.totalARecibir
           c.tceaCartera=calculateTIRNoPer(this.cashFlows,this.dates,c.diasXAnio)
           c.tipoMoneda=c.tipoMoneda
+          c.cambio=c.cambio;
           this.cS.modificar(c).subscribe();
 
           console.log('RESUMEN TCEA: El TCEA de la cartera ' + c.id + ' es ' + calculateTIRNoPer(this.cashFlows,this.dates,c.diasXAnio))

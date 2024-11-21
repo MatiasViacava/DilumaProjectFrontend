@@ -83,7 +83,8 @@ export class CarteraCreaeditaComponent {
       nDeInstr: [0],
       totalARecibir: [0.0, [Validators.required, Validators.min(0)]],
       tceaCartera: [0.0, [Validators.required, Validators.min(0), Validators.max(100)]],
-      tipoMoneda: [1, [Validators.required, Validators.min(0)]]
+      tipoMoneda: [1, [Validators.required, Validators.min(0)]],
+      cambio: [0.0, [Validators.required, Validators.min(0.01)]]
     });
 
     this.route.params.subscribe((data: Params) => {
@@ -122,6 +123,8 @@ export class CarteraCreaeditaComponent {
       this.carteras.totalARecibir = this.form.value.totalARecibir;
       this.carteras.tceaCartera = this.form.value.tceaCartera;
       this.carteras.tipoMoneda = this.form.value.tipoMoneda;
+      this.carteras.cambio = this.form.value.cambio;
+
      
 
  
@@ -221,7 +224,8 @@ export class CarteraCreaeditaComponent {
             nDeInstr: new FormControl(data.nDeInstr),
             totalARecibir: new FormControl(data.totalARecibir),
             tceaCartera: new FormControl(data.tceaCartera),
-            tipoMoneda: new FormControl(data.tipoMoneda)
+            tipoMoneda: new FormControl(data.tipoMoneda),
+            cambio: new FormControl(data.cambio)
          
         });
       

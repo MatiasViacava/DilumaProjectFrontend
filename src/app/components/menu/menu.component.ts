@@ -37,7 +37,15 @@ export class MenuComponent implements OnInit{
 
   redirigirYRecargar(ruta: string): void {
     this.router.navigate([ruta]).then(() => {
-      window.location.reload();
+      // Primera recarga
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000); // Espera 1 segundo
+
+      // Segunda recarga
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000); // Espera 2 segundos desde el inicio
     });
   }
 

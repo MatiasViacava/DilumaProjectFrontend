@@ -94,8 +94,8 @@ export class LetraListarComponent {
             if (c.id == l.idCartera.id)
             {
               if (l.tipoMoneda == l.idCartera.tipoMoneda) {l.valorNominal=l.valorNominal}
-              else if (l.idCartera.tipoMoneda==2 && l.tipoMoneda==1) {l.valorNominal=l.valorNominal/3.78}
-              else if (l.idCartera.tipoMoneda==1 && l.tipoMoneda == 2) {l.valorNominal=l.valorNominal*3.78}
+              else if (l.idCartera.tipoMoneda==2 && l.tipoMoneda==1) {l.valorNominal=l.valorNominal/l.idCartera.cambio}
+              else if (l.idCartera.tipoMoneda==1 && l.tipoMoneda == 2) {l.valorNominal=l.valorNominal*l.idCartera.cambio}
               
               const fechadescuentocartera = new Date(c.fechaDescuento);
               const fechadescuentoletra = new Date(l.fechaDeDscto);
@@ -144,7 +144,11 @@ export class LetraListarComponent {
               l.valorARecibir=valorARecibir
               l.flujo=l.flujo
               l.tcea=l.tcea
-              l.tipoMoneda=l.tipoMoneda
+
+              if (l.tipoMoneda == l.idCartera.tipoMoneda) {l.tipoMoneda=l.tipoMoneda}
+              else if (l.idCartera.tipoMoneda==2 && l.tipoMoneda==1) {l.tipoMoneda=2}
+              else if (l.idCartera.tipoMoneda==1 && l.tipoMoneda == 2) {l.tipoMoneda=1}
+              
               this.lS.modificar(l).subscribe();
             }
           }
@@ -190,7 +194,8 @@ export class LetraListarComponent {
                   c2.nDeInstr=c2.nDeInstr,
                   c2.totalARecibir=this.flujotemp,
                   c2.tceaCartera=c2.tceaCartera,
-                  c2.tipoMoneda=c2.tipoMoneda
+                  c2.tipoMoneda=c2.tipoMoneda,
+                  c.cambio=c.cambio
                   this.cS.modificar(c2).subscribe();
               } 
 

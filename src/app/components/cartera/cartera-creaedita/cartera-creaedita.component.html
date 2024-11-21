@@ -183,7 +183,7 @@
           </div>
 
           <div class="columna">
-            <mat-label class="label">Seguro</mat-label>
+            <mat-label class="label">Seguro (%)</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>Seguro</mat-label>
               <input matInput placeholder="seguro" formControlName="seguro" type="number"/>
@@ -207,7 +207,7 @@
                 </mat-error>
             </mat-form-field>
             
-            <mat-label class="label">Retención</mat-label>
+            <mat-label class="label">Retención (%)</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>Retención</mat-label>
               <input matInput placeholder="retencion" formControlName="retencion" type="number"/>
@@ -236,7 +236,7 @@
             
 
             
-            <mat-label class="label">TEA Compensatoria</mat-label>
+            <mat-label class="label">TEA Compensatoria (%)</mat-label>
             <mat-form-field class="example-full-width">
               <mat-label>TEA Compensatoria</mat-label>
               <input matInput placeholder="teaCompensatoria" formControlName="teaCompensatoria" type="number"/>
@@ -284,6 +284,15 @@
                   *ngIf="obtenerControlCampo('tipoMoneda')?.errors?.['required']"
                   >Complete el campo
                 </mat-error>
+            </mat-form-field>
+
+            <mat-label class="label">Cambio</mat-label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Cambio</mat-label>
+              <input matInput placeholder="cambio" formControlName="cambio" type="number"/>
+              <mat-error *ngIf="obtenerControlCampo('cambio')?.errors?.['required']" type="number">
+                Complete el campo
+              </mat-error>
             </mat-form-field>
 
           </div><!--Columna end-->
