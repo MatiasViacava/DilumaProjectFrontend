@@ -135,7 +135,7 @@ export class CarteraListarComponent {
           c.totalARecibir=c.totalARecibir
           c.tceaCartera=calculateTIRNoPer(this.cashFlows,this.dates,c.diasXAnio)
 
-          if (c.diasXAnio != 365) c.tceaCartera=calculateTIRNoPer(this.cashFlows,this.dates,365)
+          
 
           c.tipoMoneda=c.tipoMoneda
           c.cambio=c.cambio;
