@@ -145,6 +145,7 @@
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
           <button class="boton-eliminar"
+          *ngIf="role=='ADMIN'"
             mat-raised-button
             (click)="eliminar(element.id)"
             ><mat-icon>delete</mat-icon>
