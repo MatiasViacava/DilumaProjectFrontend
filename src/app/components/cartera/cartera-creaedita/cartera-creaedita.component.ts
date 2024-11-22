@@ -147,7 +147,8 @@ export class CarteraCreaeditaComponent {
             })
           })
         }
-        this.redirigirYRecargar('/components/carteras/listar');
+        if (this.edicion == false) this.redirigirYRecargar('/components/carteras/listar');
+        else this.redirigirYRecargar('/components/letras/listar');
 
     } else {
       this.mensaje=this.obtenerMensajesDeError();
