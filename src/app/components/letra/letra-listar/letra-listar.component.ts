@@ -7,49 +7,8 @@ import { CarteraService } from 'src/app/services/cartera.service';
 import { LetraService } from 'src/app/services/letra.service';
 import { UsuariosService } from 'src/app/services/usuario.service';
 import { LoginService } from 'src/app/services/login.service';
+import { MatSort } from '@angular/material/sort';
 
-
-function calculateTIRNoPer(cashFlows: number[], dates: (Date | string)[], diasXAnio: number): number {
-  // Convertir cualquier string a Date
-  const convertedDates = dates.map(date => (typeof date === 'string' ? new Date(date) : date));
-
-  const maxIterations = 1000; // Iteraciones máximas para la convergencia
-  const tolerance = 1e-7; // Tolerancia para la precisión del cálculo
-  const daysInYear = diasXAnio;
-
-  if (cashFlows.length !== convertedDates.length) {
-    throw new Error("La cantidad de flujos debe coincidir con la cantidad de fechas.");
-  }
-
-  const baseDate = convertedDates[0];
-  const days = convertedDates.map(date => (date.getTime() - baseDate.getTime()) / (1000 * 60 * 60 * 24));
-
-  function npv(rate: number): number {
-    return cashFlows.reduce((sum, flow, i) => sum + flow / Math.pow(1 + rate, days[i] / daysInYear), 0);
-  }
-
-  function npvPrime(rate: number): number {
-    return cashFlows.reduce(
-      (sum, flow, i) =>
-        sum - (flow * (days[i] / daysInYear)) / Math.pow(1 + rate, (days[i] / daysInYear) + 1),
-      0
-    );
-  }
-
-  let rate = 0.1;
-  for (let i = 0; i < maxIterations; i++) {
-    const npvValue = npv(rate);
-    const npvDerivative = npvPrime(rate);
-    const newRate = rate - npvValue / npvDerivative;
-
-    if (Math.abs(newRate - rate) < tolerance) {
-      return newRate;
-    }
-    rate = newRate;
-  }
-
-  throw new Error("No se pudo calcular la TIR.");
-}
 
 @Component({
   selector: 'app-letra-listar',
@@ -72,7 +31,16 @@ export class LetraListarComponent {
   role:string="";
   username: string="";
 
-  
+  @ViewChild(MatSort) sort!: MatSort;
+
+ngAfterViewInit() {
+  this.lS.list().subscribe((data) => {
+    const sortedData = data.sort((a, b) => a.id - b.id);
+    this.dataSource = new MatTableDataSource(sortedData);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  });
+}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
@@ -87,10 +55,7 @@ export class LetraListarComponent {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
 
-    this.lS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
+
 
 
     //Actualizar datos
@@ -247,12 +212,21 @@ export class LetraListarComponent {
         }
     })
     
-    
+    this.lS.list().subscribe((data) => {
+      const sortedData = data.sort((a, b) => a.id - b.id);
+
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+    });
 
     this.lS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     }); 
+
+
+
+
   }
   eliminar(idLetra: number){
     this.lS.eliminar(idLetra).subscribe(() => {
